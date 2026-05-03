@@ -1,0 +1,98 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  *, *::before, *::after { box-sizing: border-box; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    @apply bg-background text-text font-body antialiased;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  ::selection { background: #2563eb; color: #ffffff; }
+
+  ::-webkit-scrollbar { width: 6px; }
+  ::-webkit-scrollbar-track { background: #101010; }
+  ::-webkit-scrollbar-thumb { background: #2a2a2a; border-radius: 3px; }
+  ::-webkit-scrollbar-thumb:hover { background: #2563eb; }
+}
+
+@layer components {
+  /* Grid decorativo — engineering paper */
+  .bg-grid {
+    background-image:
+      linear-gradient(rgba(255,255,255,0.025) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(255,255,255,0.025) 1px, transparent 1px);
+    background-size: 60px 60px;
+  }
+
+  .bg-grid-sm {
+    background-image:
+      linear-gradient(rgba(255,255,255,0.015) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(255,255,255,0.015) 1px, transparent 1px);
+    background-size: 24px 24px;
+  }
+
+  /* Botones */
+  .btn-primary {
+    @apply inline-flex items-center gap-2 px-6 py-3 bg-accent text-background font-display font-bold text-sm tracking-widest uppercase
+    transition-all duration-200 hover:bg-accent-dim hover:scale-[0.98] active:scale-95;
+  }
+
+  .btn-secondary {
+    @apply inline-flex items-center gap-2 px-6 py-3 border border-border text-text font-display font-bold text-sm tracking-widest uppercase
+    transition-all duration-200 hover:border-accent hover:text-accent hover:scale-[0.98] active:scale-95;
+  }
+
+  .btn-ghost {
+    @apply inline-flex items-center gap-2 px-4 py-2 text-muted font-body text-sm
+    transition-colors duration-200 hover:text-text;
+  }
+
+  /* Cards */
+  .card {
+    @apply bg-surface border border-border transition-all duration-300
+    hover:border-accent/40 hover:shadow-[0_0_30px_rgba(37,99,235,0.08)];
+  }
+
+  /* Input */
+  .input {
+    @apply w-full bg-surface-2 border border-border px-4 py-3 text-text font-body text-sm
+    placeholder:text-muted outline-none transition-all duration-200
+    focus:border-accent/60 focus:bg-surface;
+  }
+
+  /* Section title */
+  .section-heading {
+    @apply font-display font-extrabold text-4xl md:text-6xl text-text tracking-tighter leading-none;
+  }
+
+  .section-label {
+    @apply font-mono text-accent text-xs tracking-[0.3em] uppercase;
+  }
+
+  /* Badge */
+  .badge {
+    @apply inline-flex items-center px-2 py-0.5 font-mono text-xs tracking-wider border;
+  }
+
+  .badge-live { @apply badge border-accent/40 text-accent bg-accent/5; }
+  .badge-beta { @apply badge border-blue-500/40 text-blue-400 bg-blue-500/5; }
+  .badge-building { @apply badge border-yellow-500/40 text-yellow-400 bg-yellow-500/5; }
+  .badge-active { @apply badge border-accent/40 text-accent bg-accent/5; }
+  .badge-proposal { @apply badge border-muted/40 text-muted bg-muted/5; }
+
+  /* Cursor parpadeante */
+  .cursor::after {
+    content: '_';
+    @apply text-accent animate-blink;
+  }
+
+  /* Número grande decorativo */
+  .stat-number {
+    @apply font-display font-extrabold text-7xl md:text-9xl text-accent/10 leading-none select-none;
+  }
+}

@@ -1,0 +1,32 @@
+export const PRODUCTS = [
+  {
+    id: 'crackercrm',
+    name: 'CrackerCRM',
+    tagline: 'CRM para agencias y estudios creativos',
+    description: 'Gestión de clientes, proyectos y facturación en una sola app. Diseñado específicamente para agencias de diseño, estudios de software y consultoras.',
+    status: 'beta' as const,
+    features: ['Pipeline de ventas', 'Gestión de proyectos', 'Facturación automática', 'Portal de clientes'],
+    cta: 'Unirse a la beta',
+    color: '#1e40af',
+  },
+  {
+    id: 'dashkit',
+    name: 'DashKit',
+    tagline: 'Dashboards embebibles en minutos',
+    description: 'Componentes de analytics listos para producción. Conectá tus datos y tenés dashboards profesionales sin construir desde cero.',
+    status: 'building' as const,
+    features: ['20+ tipos de charts', 'Filtros dinámicos', 'Export CSV/PDF', 'White-label'],
+    cta: 'Notificarme',
+    color: '#60A5FA',
+  },
+  {
+    id: 'formlink',
+    name: 'FormLink',
+    tagline: 'Formularios que convierten y persisten',
+    description: 'Builder de formularios con lógica condicional, integraciones con CRMs y análisis de conversión por campo. Para equipos de marketing y producto.',
+    status: 'building' as const,
+    features: ['Lógica condicional', 'A/B testing', 'Webhooks', 'Analytics por campo'],
+    cta: 'Notificarme',
+    color: '#A78BFA',
+  },
+]

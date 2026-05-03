@@ -1,0 +1,50 @@
+export const SERVICES = [
+  {
+    id: 'web',
+    icon: '◈',
+    title: 'Desarrollo Web',
+    short: 'Apps, plataformas y e-commerce que escalan.',
+    description: 'Construimos desde landing pages de conversión hasta plataformas SaaS complejas. React, Next.js, Node.js, PostgreSQL. Arquitectura limpia, código mantenible, deploy automatizado.',
+    stack: ['React', 'Next.js', 'Node.js', 'PostgreSQL', 'Docker'],
+    deliverables: ['Diseño UI/UX', 'Frontend responsive', 'API REST', 'Base de datos', 'CI/CD pipeline', 'Deploy en producción'],
+    timeline: '4–12 semanas',
+  },
+  {
+    id: 'mobile',
+    icon: '◉',
+    title: 'Apps Mobile',
+    short: 'iOS y Android desde un solo codebase.',
+    description: 'React Native para apps cross-platform con rendimiento nativo. Publicación en App Store y Google Play. Integración con APIs, push notifications, cámara, geolocalización y más.',
+    stack: ['React Native', 'Expo', 'TypeScript', 'Firebase', 'Redux'],
+    deliverables: ['Diseño nativo', 'App iOS', 'App Android', 'Backend API', 'Publicación stores', 'Analytics'],
+    timeline: '6–16 semanas',
+  },
+  {
+    id: 'saas',
+    icon: '◆',
+    title: 'Productos SaaS',
+    short: 'MVPs rápidos. Productos que generan ingresos.',
+    description: 'De la idea al producto en producción. Auth, billing, dashboards, onboarding, multitenancy. Todo lo que necesita un SaaS para adquirir y retener usuarios desde el día uno.',
+    stack: ['Next.js', 'Prisma', 'Stripe', 'Resend', 'Vercel'],
+    deliverables: ['Auth completa', 'Billing & suscripciones', 'Dashboard usuario', 'Panel admin', 'Emails transaccionales', 'Analytics'],
+    timeline: '8–20 semanas',
+  },
+  {
+    id: 'consulting',
+    icon: '◇',
+    title: 'Consultoría & Arquitectura',
+    short: 'Diseñamos sistemas que duran años, no meses.',
+    description: 'Auditoría de código, rediseño de arquitectura, migración de stacks legacy, definición de roadmap técnico. Para equipos que necesitan claridad antes de escalar.',
+    stack: ['AWS', 'GCP', 'Microservices', 'Event-driven', 'DDD'],
+    deliverables: ['Auditoría técnica', 'Diagrama de arquitectura', 'Roadmap priorizado', 'Documento de decisiones', 'Workshop del equipo'],
+    timeline: '1–4 semanas',
+  },
+]
+
+export const PROCESS = [
+  { step: '01', title: 'Discovery', desc: 'Entendemos el negocio, los usuarios y los objetivos. Definimos alcance, stack y timeline.' },
+  { step: '02', title: 'Diseño', desc: 'Wireframes, UI/UX, sistema de diseño. Todo aprobado antes de codear.' },
+  { step: '03', title: 'Desarrollo', desc: 'Sprints semanales con demos. Código revisado, testeado y documentado.' },
+  { step: '04', title: 'Deploy', desc: 'CI/CD, monitoreo, configuración de infra. La app llega a producción lista.' },
+  { step: '05', title: 'Soporte', desc: 'Mantenimiento, updates y evolución del producto. No desaparecemos tras el launch.' },
+]

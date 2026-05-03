@@ -1,0 +1,36 @@
+export const TEAM = [
+  {
+    name: 'Alexis Plescia',
+    role: 'Founder & Full Stack Engineer',
+    bio: 'Full Stack Developer con foco en React, Node.js y arquitectura de sistemas. Analista de datos con experiencia en dashboards empresariales a escala nacional.',
+    stack: ['React', 'Node.js', 'Python', 'PostgreSQL', 'Docker'],
+    initials: 'AP',
+    color: '#1e40af',
+    linkedin: 'https://www.linkedin.com/in/alexisplescia/',
+    github: 'https://github.com/AlexisPlescia',
+  },
+  {
+    name: 'Santiago Ruiz',
+    role: 'Backend Engineer',
+    bio: 'Especialista en APIs de alto rendimiento, microservicios y bases de datos. Apasionado por el software bien hecho y la escalabilidad.',
+    stack: ['Node.js', 'Go', 'PostgreSQL', 'Redis', 'AWS'],
+    initials: 'SR',
+    color: '#60A5FA',
+  },
+  {
+    name: 'Camila Torres',
+    role: 'UI/UX & Frontend',
+    bio: 'Diseña interfaces que los usuarios aman usar. Convierte ideas complejas en experiencias digitales claras y memorables.',
+    stack: ['Figma', 'React', 'TailwindCSS', 'Framer Motion', 'TypeScript'],
+    initials: 'CT',
+    color: '#F472B6',
+  },
+  {
+    name: 'Nicolás Herrera',
+    role: 'Mobile Engineer',
+    bio: 'Desarrolla apps React Native con rendimiento nativo. De la idea a las stores, con foco en UX mobile-first.',
+    stack: ['React Native', 'Expo', 'TypeScript', 'Firebase', 'Redux'],
+    initials: 'NH',
+    color: '#F97316',
+  },
+]
