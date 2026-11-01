@@ -3,6 +3,7 @@ import { Link, useLocation, useNavigate } from 'react-router-dom'
 import { motion, AnimatePresence } from 'framer-motion'
 import { useAuthStore } from '../../store/authStore'
 import clsx from 'clsx'
+import ThemeToggle from '../ui/ThemeToggle'
 
 const LINKS = [
   { to: '/servicios', label: 'Servicios' },
@@ -57,6 +58,7 @@ export default function Navbar() {
 
         {/* Desktop right */}
         <div className="hidden md:flex items-center gap-3">
+          <ThemeToggle />
           {isAuthenticated ? (
             <>
               {!isDashboard && (
@@ -85,16 +87,19 @@ export default function Navbar() {
           )}
         </div>
 
-        {/* Hamburger */}
-        <button
-          className="md:hidden flex flex-col gap-1.5 p-2"
-          onClick={() => setOpen(!open)}
-          aria-label="Menu"
-        >
-          <span className={clsx('w-5 h-px bg-text transition-all duration-300', open && 'rotate-45 translate-y-[7px]')} />
-          <span className={clsx('w-5 h-px bg-text transition-all duration-300', open && 'opacity-0')} />
-          <span className={clsx('w-5 h-px bg-text transition-all duration-300', open && '-rotate-45 -translate-y-[7px]')} />
-        </button>
+        {/* Mobile: tema + hamburguesa */}
+        <div className="md:hidden flex items-center gap-2">
+          <ThemeToggle />
+          <button
+            className="flex flex-col gap-1.5 p-2"
+            onClick={() => setOpen(!open)}
+            aria-label="Menu"
+          >
+            <span className={clsx('w-5 h-px bg-text transition-all duration-300', open && 'rotate-45 translate-y-[7px]')} />
+            <span className={clsx('w-5 h-px bg-text transition-all duration-300', open && 'opacity-0')} />
+            <span className={clsx('w-5 h-px bg-text transition-all duration-300', open && '-rotate-45 -translate-y-[7px]')} />
+          </button>
+        </div>
       </nav>
 
       {/* Mobile drawer */}

@@ -1,19 +1,21 @@
 import type { Config } from 'tailwindcss'
 
 export default {
+  darkMode: 'class',
   content: ['./index.html', './src/**/*.{ts,tsx}'],
   theme: {
     extend: {
       colors: {
-        background: '#080808',
-        surface: '#101010',
-        'surface-2': '#181818',
-        border: '#242424',
-        text: '#EBEBEB',
-        muted: '#555555',
-        accent: '#2563eb',
-        'accent-dim': '#1d4ed8',
-        'accent-light': '#93c5fd',
+        // Los colores salen de variables CSS (styles/globals.css): cambian con el modo claro/oscuro
+        background: 'rgb(var(--c-bg) / <alpha-value>)',
+        surface: 'rgb(var(--c-surface) / <alpha-value>)',
+        'surface-2': 'rgb(var(--c-surface-2) / <alpha-value>)',
+        border: 'rgb(var(--c-border) / <alpha-value>)',
+        text: 'rgb(var(--c-text) / <alpha-value>)',
+        muted: 'rgb(var(--c-muted) / <alpha-value>)',
+        accent: 'rgb(var(--c-accent) / <alpha-value>)',
+        'accent-dim': 'rgb(var(--c-accent-dim) / <alpha-value>)',
+        'accent-light': 'rgb(var(--c-accent-light) / <alpha-value>)',
       },
       fontFamily: {
         display: ['Plus Jakarta Sans', 'sans-serif'],

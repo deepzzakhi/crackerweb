@@ -30,6 +30,8 @@ const rateLimitDefaults = {
 // Límites por tipo de tráfico: un abuso del formulario no debe tumbar la API.
 app.use('/api/auth', rateLimit({ ...rateLimitDefaults, windowMs: 15 * 60 * 1000, max: 20 }))
 app.use('/api/contact', rateLimit({ ...rateLimitDefaults, windowMs: 60 * 60 * 1000, max: 5 }))
+// Cada mensaje del chat cuesta una llamada a la IA: tope por IP para que nadie lo use de proxy gratis
+app.use('/api/chat', rateLimit({ ...rateLimitDefaults, windowMs: 15 * 60 * 1000, max: 30 }))
 app.use('/api', rateLimit({ ...rateLimitDefaults, windowMs: 15 * 60 * 1000, max: 300 }))
 
 app.use('/api', router)

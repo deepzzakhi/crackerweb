@@ -3,9 +3,44 @@
 @tailwind utilities;
 
 @layer base {
+  /* Tema oscuro (por defecto). Valores "R G B" para que Tailwind pueda aplicar transparencia. */
+  :root {
+    color-scheme: dark;
+    --c-bg: 8 8 8;
+    --c-surface: 16 16 16;
+    --c-surface-2: 24 24 24;
+    --c-border: 36 36 36;
+    --c-text: 235 235 235;
+    --c-muted: 128 128 128;
+    --c-accent: 37 99 235;
+    --c-accent-dim: 29 78 216;
+    --c-accent-light: 147 197 253;
+    --grid-line: 255 255 255;
+    --grid-alpha: 0.025;
+    --scroll-thumb: 42 42 42;
+  }
+
+  /* Tema claro: azul corporativo del Design System de Cracker */
+  :root.light {
+    color-scheme: light;
+    --c-bg: 248 250 252;
+    --c-surface: 255 255 255;
+    --c-surface-2: 241 245 249;
+    --c-border: 226 232 240;
+    --c-text: 15 23 42;
+    --c-muted: 100 116 139;
+    --c-accent: 37 99 235;
+    --c-accent-dim: 29 78 216;
+    --c-accent-light: 29 78 216;
+    --grid-line: 15 23 42;
+    --grid-alpha: 0.045;
+    --scroll-thumb: 203 213 225;
+  }
+
   *, *::before, *::after { box-sizing: border-box; }
 
   html { scroll-behavior: smooth; }
+  html.theme-transition, html.theme-transition * { transition: background-color .25s ease, border-color .25s ease, color .25s ease !important; }
 
   body {
     @apply bg-background text-text font-body antialiased;
@@ -15,8 +50,8 @@
   ::selection { background: #2563eb; color: #ffffff; }
 
   ::-webkit-scrollbar { width: 6px; }
-  ::-webkit-scrollbar-track { background: #101010; }
-  ::-webkit-scrollbar-thumb { background: #2a2a2a; border-radius: 3px; }
+  ::-webkit-scrollbar-track { background: rgb(var(--c-surface)); }
+  ::-webkit-scrollbar-thumb { background: rgb(var(--scroll-thumb)); border-radius: 3px; }
   ::-webkit-scrollbar-thumb:hover { background: #2563eb; }
 }
 
@@ -24,15 +59,15 @@
   /* Grid decorativo — engineering paper */
   .bg-grid {
     background-image:
-      linear-gradient(rgba(255,255,255,0.025) 1px, transparent 1px),
-      linear-gradient(90deg, rgba(255,255,255,0.025) 1px, transparent 1px);
+      linear-gradient(rgb(var(--grid-line) / var(--grid-alpha)) 1px, transparent 1px),
+      linear-gradient(90deg, rgb(var(--grid-line) / var(--grid-alpha)) 1px, transparent 1px);
     background-size: 60px 60px;
   }
 
   .bg-grid-sm {
     background-image:
-      linear-gradient(rgba(255,255,255,0.015) 1px, transparent 1px),
-      linear-gradient(90deg, rgba(255,255,255,0.015) 1px, transparent 1px);
+      linear-gradient(rgb(var(--grid-line) / calc(var(--grid-alpha) * 0.6)) 1px, transparent 1px),
+      linear-gradient(90deg, rgb(var(--grid-line) / calc(var(--grid-alpha) * 0.6)) 1px, transparent 1px);
     background-size: 24px 24px;
   }
 

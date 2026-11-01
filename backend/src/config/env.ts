@@ -43,4 +43,8 @@ export const env = {
   TRUST_PROXY: Number(process.env.TRUST_PROXY ?? (isProduction ? 1 : 0)),
   // Acceso demo al dashboard (datos ficticios) con token firmado de 2 h. Se apaga con DEMO_MODE=false.
   DEMO_MODE: process.env.DEMO_MODE !== 'false',
+  // Asistente del chat. Sin API key el chat responde 503 y la web ofrece WhatsApp directo.
+  ANTHROPIC_API_KEY: process.env.ANTHROPIC_API_KEY ?? '',
+  // Para bajar costos se puede usar claude-haiku-5-5
+  CHAT_MODEL: process.env.CHAT_MODEL ?? 'claude-opus-5-5',
 }

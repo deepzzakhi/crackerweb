@@ -1,4 +1,5 @@
 import { Link } from 'react-router-dom'
+import { EMAIL, WHATSAPP_LABEL, whatsappLink } from '../../data/contact'
 
 export default function Footer() {
   return (
@@ -13,8 +14,8 @@ export default function Footer() {
               Construimos el software que tu negocio necesita para crecer. Desde MVPs hasta sistemas empresariales.
             </p>
             <div className="flex gap-4 mt-6">
-              <a href="https://github.com/AlexisPlescia" target="_blank" rel="noopener noreferrer" className="font-mono text-xs text-muted hover:text-accent transition-colors">GitHub</a>
-              <a href="https://www.linkedin.com/in/alexisplescia/" target="_blank" rel="noopener noreferrer" className="font-mono text-xs text-muted hover:text-accent transition-colors">LinkedIn</a>
+              <a href={whatsappLink()} target="_blank" rel="noopener noreferrer" className="font-mono text-xs text-muted hover:text-accent transition-colors">WhatsApp</a>
+              <a href={`mailto:${EMAIL}`} className="font-mono text-xs text-muted hover:text-accent transition-colors">Email</a>
             </div>
           </div>
           <div>
@@ -28,7 +29,8 @@ export default function Footer() {
           <div>
             <p className="font-mono text-xs text-muted tracking-widest uppercase mb-4">Contacto</p>
             <div className="flex flex-col gap-2">
-              <a href="mailto:hola@cracker.dev" className="font-body text-sm text-muted hover:text-accent transition-colors">hola@cracker.dev</a>
+              <a href={`mailto:${EMAIL}`} className="font-body text-sm text-muted hover:text-accent transition-colors">{EMAIL}</a>
+              <a href={whatsappLink()} target="_blank" rel="noopener noreferrer" className="font-body text-sm text-muted hover:text-accent transition-colors">WhatsApp {WHATSAPP_LABEL}</a>
               <Link to="/contacto" className="font-body text-sm text-muted hover:text-text transition-colors">Formulario de contacto</Link>
               <Link to="/login" className="font-body text-sm text-muted hover:text-text transition-colors">Ver demo</Link>
             </div>

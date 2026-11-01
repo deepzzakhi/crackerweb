@@ -1,6 +1,7 @@
 import { Outlet } from 'react-router-dom'
 import Navbar from './Navbar'
 import Footer from './Footer'
+import ChatWidget from '../chat/ChatWidget'
 
 export default function PageWrapper() {
   return (
@@ -10,6 +11,7 @@ export default function PageWrapper() {
         <Outlet />
       </main>
       <Footer />
+      <ChatWidget />
     </div>
   )
 }

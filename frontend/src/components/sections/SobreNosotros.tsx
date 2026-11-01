@@ -50,8 +50,8 @@ const PIE_DATA = [
 const PIE_COLORS = ['#2563eb', '#1d4ed8', '#3b82f6', '#60a5fa', '#93c5fd', '#bfdbfe']
 
 const TP = {
-  contentStyle: { background: '#101010', border: '1px solid #242424', borderRadius: 0, fontFamily: 'DM Sans', fontSize: 12 },
-  labelStyle: { color: '#EBEBEB' },
+  contentStyle: { background: 'rgb(var(--c-surface))', border: '1px solid rgb(var(--c-border))', borderRadius: 0, fontFamily: 'DM Sans', fontSize: 12 },
+  labelStyle: { color: 'rgb(var(--c-text))' },
 }
 
 // ─── Custom Pie label ─────────────────────────────────────────────────────────
@@ -180,7 +180,7 @@ export default function SobreNosotros() {
                 <p className="font-mono text-xs text-muted mb-4">Evolución mensual 2026</p>
                 <ResponsiveContainer width="100%" height={220}>
                   <BarChart data={MONTHLY} barGap={2} barSize={10}>
-                    <CartesianGrid stroke="#1A1A1A" strokeDasharray="3 3" vertical={false} />
+                    <CartesianGrid stroke="rgba(128,128,128,0.18)" strokeDasharray="3 3" vertical={false} />
                     <XAxis dataKey="mes" tick={{ fill: '#555', fontSize: 10, fontFamily: 'JetBrains Mono' }} axisLine={false} tickLine={false} />
                     <YAxis tick={{ fill: '#555', fontSize: 10, fontFamily: 'JetBrains Mono' }} axisLine={false} tickLine={false} tickFormatter={v => `$${(v / 1000).toFixed(0)}K`} width={48} />
                     <Tooltip

@@ -2,6 +2,7 @@ import { useState } from 'react'
 import { motion, useInView } from 'framer-motion'
 import { useRef } from 'react'
 import api from '../../services/api'
+import { EMAIL, WHATSAPP_LABEL, whatsappLink } from '../../data/contact'
 
 const PROJECT_TYPES = ['Desarrollo Web', 'App Mobile', 'Producto SaaS', 'Dashboard / Analytics', 'Consultoría', 'Otro']
 
@@ -94,17 +95,24 @@ export default function ContactSection() {
                 Respondemos todas las consultas en menos de 24 horas. Primera reunión de discovery sin costo.
               </p>
             </div>
-            {[
-              { label: 'Email', value: 'hola@cracker.dev' },
-              { label: 'LinkedIn', value: 'linkedin.com/in/alexisplescia' },
-              { label: 'GitHub', value: 'github.com/AlexisPlescia' },
-              { label: 'Ubicación', value: 'Buenos Aires, Argentina' },
-            ].map(item => (
-              <div key={item.label} className="border-t border-border pt-5">
-                <p className="font-mono text-xs text-muted mb-1">{item.label}</p>
-                <p className="font-body text-sm text-text">{item.value}</p>
+            <div className="border-t border-border pt-5">
+              <p className="font-mono text-xs text-muted mb-1">Email</p>
+              <a href={`mailto:${EMAIL}`} className="font-body text-sm text-text hover:text-accent transition-colors">{EMAIL}</a>
+            </div>
+            <div className="border-t border-border pt-5">
+              <p className="font-mono text-xs text-muted mb-1">WhatsApp</p>
+              <a href={whatsappLink('Hola Cracker! Vengo de la web y quiero consultar por un proyecto.')} target="_blank" rel="noopener noreferrer"
+                className="font-body text-sm text-text hover:text-accent transition-colors">{WHATSAPP_LABEL} ↗</a>
+            </div>
+            <div className="border-t border-border pt-5">
+              <p className="font-mono text-xs text-muted mb-1">Reunión</p>
+              <div className="flex flex-wrap items-center justify-between gap-3">
+                <p className="font-body text-sm text-text">Agendá una cita con el equipo</p>
+                {/* Por ahora la cita se coordina por WhatsApp; después va al flujo de agenda con cuenta */}
+                <a href={whatsappLink('Hola Cracker! Quiero agendar una reunión para contarles mi proyecto.')} target="_blank" rel="noopener noreferrer"
+                  className="btn-secondary text-xs py-2 px-4">Agendar →</a>
               </div>
-            ))}
+            </div>
           </motion.div>
         </div>
       </div>

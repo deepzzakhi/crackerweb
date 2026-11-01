@@ -11,8 +11,8 @@ interface OverviewData {
 }
 
 const TOOLTIP_STYLE = {
-  contentStyle: { background: '#101010', border: '1px solid #242424', borderRadius: 0, fontFamily: 'DM Sans', fontSize: 12 },
-  labelStyle: { color: '#EBEBEB' },
+  contentStyle: { background: 'rgb(var(--c-surface))', border: '1px solid rgb(var(--c-border))', borderRadius: 0, fontFamily: 'DM Sans', fontSize: 12 },
+  labelStyle: { color: 'rgb(var(--c-text))' },
   itemStyle: { color: '#60a5fa' },
 }
 
@@ -61,7 +61,7 @@ export default function Overview() {
                   <stop offset="95%" stopColor="#60a5fa" stopOpacity={0} />
                 </linearGradient>
               </defs>
-              <CartesianGrid stroke="#1A1A1A" strokeDasharray="3 3" vertical={false} />
+              <CartesianGrid stroke="rgba(128,128,128,0.18)" strokeDasharray="3 3" vertical={false} />
               <XAxis dataKey="month" tick={{ fill: '#555', fontSize: 10, fontFamily: 'JetBrains Mono' }} axisLine={false} tickLine={false} />
               <YAxis tick={{ fill: '#555', fontSize: 10, fontFamily: 'JetBrains Mono' }} axisLine={false} tickLine={false} tickFormatter={v => `$${(v/1000).toFixed(0)}K`} />
               <Tooltip {...TOOLTIP_STYLE} formatter={(v: number) => [`$${(v/1000).toFixed(1)}K`, 'Revenue']} />
@@ -78,7 +78,7 @@ export default function Overview() {
           </div>
           <ResponsiveContainer width="100%" height={200}>
             <BarChart data={data.users} barSize={8}>
-              <CartesianGrid stroke="#1A1A1A" strokeDasharray="3 3" vertical={false} />
+              <CartesianGrid stroke="rgba(128,128,128,0.18)" strokeDasharray="3 3" vertical={false} />
               <XAxis dataKey="month" tick={{ fill: '#555', fontSize: 10, fontFamily: 'JetBrains Mono' }} axisLine={false} tickLine={false} />
               <Tooltip {...TOOLTIP_STYLE} formatter={(v: number) => [v, 'Usuarios']} />
               <Bar dataKey="value" fill="#60a5fa" opacity={0.7} radius={[2, 2, 0, 0]} />

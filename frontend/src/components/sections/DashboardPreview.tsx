@@ -48,7 +48,7 @@ export default function DashboardPreview() {
           className="relative"
         >
           {/* Browser chrome */}
-          <div className="bg-[#0d0d0d] rounded-t-lg border border-border px-4 py-3 flex items-center gap-2">
+          <div className="bg-surface-2 rounded-t-lg border border-border px-4 py-3 flex items-center gap-2">
             <div className="flex gap-1.5">
               <div className="w-3 h-3 rounded-full bg-[#FF5F57]" />
               <div className="w-3 h-3 rounded-full bg-[#FFBD2E]" />
@@ -104,8 +104,8 @@ export default function DashboardPreview() {
                       </defs>
                       <XAxis dataKey="m" tick={{ fill: '#555', fontSize: 10, fontFamily: 'JetBrains Mono' }} axisLine={false} tickLine={false} />
                       <Tooltip
-                        contentStyle={{ background: '#101010', border: '1px solid #242424', borderRadius: 0, fontFamily: 'DM Sans', fontSize: 12 }}
-                        labelStyle={{ color: '#EBEBEB' }}
+                        contentStyle={{ background: 'rgb(var(--c-surface))', border: '1px solid rgb(var(--c-border))', borderRadius: 0, fontFamily: 'DM Sans', fontSize: 12 }}
+                        labelStyle={{ color: 'rgb(var(--c-text))' }}
                         itemStyle={{ color: '#60a5fa' }}
                         formatter={(v: number) => [`$${(v/1000).toFixed(1)}K`, 'Revenue']}
                       />

@@ -10,8 +10,8 @@ interface AnalyticsData {
 }
 
 const TP = {
-  contentStyle: { background: '#101010', border: '1px solid #242424', borderRadius: 0, fontFamily: 'DM Sans', fontSize: 12 },
-  labelStyle: { color: '#EBEBEB' },
+  contentStyle: { background: 'rgb(var(--c-surface))', border: '1px solid rgb(var(--c-border))', borderRadius: 0, fontFamily: 'DM Sans', fontSize: 12 },
+  labelStyle: { color: 'rgb(var(--c-text))' },
 }
 
 const COLORS = ['#60a5fa', '#60A5FA', '#F97316', '#A78BFA']
@@ -93,7 +93,7 @@ export default function Analytics() {
           <p className="font-mono text-xs text-muted mb-6">% clientes activos por cohorte</p>
           <ResponsiveContainer width="100%" height={180}>
             <LineChart data={data.retention}>
-              <CartesianGrid stroke="#1A1A1A" strokeDasharray="3 3" vertical={false} />
+              <CartesianGrid stroke="rgba(128,128,128,0.18)" strokeDasharray="3 3" vertical={false} />
               <XAxis dataKey="month" tick={{ fill: '#555', fontSize: 10, fontFamily: 'JetBrains Mono' }} axisLine={false} tickLine={false} />
               <YAxis tick={{ fill: '#555', fontSize: 10, fontFamily: 'JetBrains Mono' }} axisLine={false} tickLine={false} tickFormatter={v => `${v}%`} domain={[0, 100]} />
               <Tooltip {...TP} formatter={(v: number) => [`${v}%`, 'Retención']} itemStyle={{ color: '#60a5fa' }} />
@@ -108,7 +108,7 @@ export default function Analytics() {
           <p className="font-mono text-xs text-muted mb-6">Sesiones vs Conversiones</p>
           <ResponsiveContainer width="100%" height={180}>
             <BarChart data={data.weeklyActivity} barGap={2}>
-              <CartesianGrid stroke="#1A1A1A" strokeDasharray="3 3" vertical={false} />
+              <CartesianGrid stroke="rgba(128,128,128,0.18)" strokeDasharray="3 3" vertical={false} />
               <XAxis dataKey="day" tick={{ fill: '#555', fontSize: 10, fontFamily: 'JetBrains Mono' }} axisLine={false} tickLine={false} />
               <YAxis tick={{ fill: '#555', fontSize: 10, fontFamily: 'JetBrains Mono' }} axisLine={false} tickLine={false} />
               <Tooltip {...TP} itemStyle={{ color: '#60a5fa' }} />

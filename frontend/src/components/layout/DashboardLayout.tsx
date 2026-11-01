@@ -2,6 +2,7 @@ import { useState } from 'react'
 import { NavLink, Outlet, useNavigate } from 'react-router-dom'
 import { useAuthStore } from '../../store/authStore'
 import clsx from 'clsx'
+import ThemeToggle from '../ui/ThemeToggle'
 
 const NAV = [
   { to: '/dashboard', label: 'Overview', icon: '◈', end: true },
@@ -89,9 +90,12 @@ export default function DashboardLayout() {
             <span className="font-mono text-xs text-muted">Demo Dashboard</span>
             <span className="badge badge-live">Live</span>
           </div>
-          <NavLink to="/" className="font-body text-xs text-muted hover:text-accent transition-colors">
-            ← Volver al sitio
-          </NavLink>
+          <div className="flex items-center gap-3">
+            <ThemeToggle />
+            <NavLink to="/" className="font-body text-xs text-muted hover:text-accent transition-colors">
+              ← Volver al sitio
+            </NavLink>
+          </div>
         </header>
 
         <main className="flex-1 p-4 md:p-8 overflow-auto">
