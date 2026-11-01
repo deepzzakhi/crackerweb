@@ -33,10 +33,10 @@ export default function Cases() {
               <div className="flex items-start justify-between mb-6">
                 <div>
                   <span className="font-mono text-xs text-muted">{c.category}</span>
-                  <h3 className="font-display font-bold text-2xl text-text mt-1 tracking-tight">{c.title}</h3>
+                  <h3 className="font-display font-medium text-2xl text-text mt-1 tracking-tight">{c.title}</h3>
                   <p className="font-mono text-xs text-muted mt-0.5">{c.client}</p>
                 </div>
-                <div className="w-10 h-10 rounded-sm border border-border flex items-center justify-center font-display font-bold text-lg" style={{ color: c.color }}>
+                <div className="w-10 h-10 rounded-sm border border-border flex items-center justify-center font-display font-medium text-lg" style={{ color: c.color }}>
                   {c.title.charAt(0)}
                 </div>
               </div>
@@ -47,7 +47,7 @@ export default function Cases() {
               <div className="grid grid-cols-3 gap-4 mb-6 border-t border-border pt-5">
                 {c.metrics.map((m) => (
                   <div key={m.label}>
-                    <p className="font-display font-bold text-lg" style={{ color: c.color }}>{m.value}</p>
+                    <p className="font-display font-medium text-lg" style={{ color: c.color }}>{m.value}</p>
                     <p className="font-mono text-xs text-muted mt-0.5">{m.label}</p>
                   </div>
                 ))}
@@ -56,7 +56,7 @@ export default function Cases() {
               {/* Stack */}
               <div className="flex flex-wrap gap-1.5 mb-4">
                 {c.stack.map((t) => (
-                  <span key={t} className="font-mono text-xs text-muted/50 border border-border px-2 py-0.5">{t}</span>
+                  <span key={t} className="font-mono text-xs text-muted border border-border px-2 py-0.5">{t}</span>
                 ))}
               </div>
 

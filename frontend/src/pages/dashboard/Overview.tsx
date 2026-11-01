@@ -11,7 +11,7 @@ interface OverviewData {
 }
 
 const TOOLTIP_STYLE = {
-  contentStyle: { background: 'rgb(var(--c-surface))', border: '1px solid rgb(var(--c-border))', borderRadius: 0, fontFamily: 'DM Sans', fontSize: 12 },
+  contentStyle: { background: 'rgb(var(--c-surface))', border: '1px solid rgb(var(--c-border))', borderRadius: 0, fontFamily: 'Geist, system-ui, sans-serif', fontSize: 12 },
   labelStyle: { color: 'rgb(var(--c-text))' },
   itemStyle: { color: '#60a5fa' },
 }
@@ -34,7 +34,7 @@ export default function Overview() {
     <div className="space-y-6">
       <div>
         <p className="font-mono text-xs text-muted mb-1">Dashboard</p>
-        <h1 className="font-display font-bold text-2xl text-text tracking-tight">Overview</h1>
+        <h1 className="font-display font-medium text-2xl text-text tracking-tight">Overview</h1>
       </div>
 
       {/* KPIs */}
@@ -62,8 +62,8 @@ export default function Overview() {
                 </linearGradient>
               </defs>
               <CartesianGrid stroke="rgba(128,128,128,0.18)" strokeDasharray="3 3" vertical={false} />
-              <XAxis dataKey="month" tick={{ fill: '#555', fontSize: 10, fontFamily: 'JetBrains Mono' }} axisLine={false} tickLine={false} />
-              <YAxis tick={{ fill: '#555', fontSize: 10, fontFamily: 'JetBrains Mono' }} axisLine={false} tickLine={false} tickFormatter={v => `$${(v/1000).toFixed(0)}K`} />
+              <XAxis dataKey="month" tick={{ fill: '#a8adb8', fontSize: 10, fontFamily: 'Geist Mono, ui-monospace, monospace' }} axisLine={false} tickLine={false} />
+              <YAxis tick={{ fill: '#a8adb8', fontSize: 10, fontFamily: 'Geist Mono, ui-monospace, monospace' }} axisLine={false} tickLine={false} tickFormatter={v => `$${(v/1000).toFixed(0)}K`} />
               <Tooltip {...TOOLTIP_STYLE} formatter={(v: number) => [`$${(v/1000).toFixed(1)}K`, 'Revenue']} />
               <Area type="monotone" dataKey="value" stroke="#60a5fa" strokeWidth={2} fill="url(#gradRev)" dot={false} activeDot={{ r: 4, fill: '#60a5fa', stroke: '#080808', strokeWidth: 2 }} />
             </AreaChart>
@@ -79,7 +79,7 @@ export default function Overview() {
           <ResponsiveContainer width="100%" height={200}>
             <BarChart data={data.users} barSize={8}>
               <CartesianGrid stroke="rgba(128,128,128,0.18)" strokeDasharray="3 3" vertical={false} />
-              <XAxis dataKey="month" tick={{ fill: '#555', fontSize: 10, fontFamily: 'JetBrains Mono' }} axisLine={false} tickLine={false} />
+              <XAxis dataKey="month" tick={{ fill: '#a8adb8', fontSize: 10, fontFamily: 'Geist Mono, ui-monospace, monospace' }} axisLine={false} tickLine={false} />
               <Tooltip {...TOOLTIP_STYLE} formatter={(v: number) => [v, 'Usuarios']} />
               <Bar dataKey="value" fill="#60a5fa" opacity={0.7} radius={[2, 2, 0, 0]} />
             </BarChart>

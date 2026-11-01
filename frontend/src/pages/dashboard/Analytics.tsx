@@ -10,7 +10,7 @@ interface AnalyticsData {
 }
 
 const TP = {
-  contentStyle: { background: 'rgb(var(--c-surface))', border: '1px solid rgb(var(--c-border))', borderRadius: 0, fontFamily: 'DM Sans', fontSize: 12 },
+  contentStyle: { background: 'rgb(var(--c-surface))', border: '1px solid rgb(var(--c-border))', borderRadius: 0, fontFamily: 'Geist, system-ui, sans-serif', fontSize: 12 },
   labelStyle: { color: 'rgb(var(--c-text))' },
 }
 
@@ -32,7 +32,7 @@ export default function Analytics() {
     <div className="space-y-6">
       <div>
         <p className="font-mono text-xs text-muted mb-1">Dashboard</p>
-        <h1 className="font-display font-bold text-2xl text-text tracking-tight">Analytics</h1>
+        <h1 className="font-display font-medium text-2xl text-text tracking-tight">Analytics</h1>
       </div>
 
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-5">
@@ -94,8 +94,8 @@ export default function Analytics() {
           <ResponsiveContainer width="100%" height={180}>
             <LineChart data={data.retention}>
               <CartesianGrid stroke="rgba(128,128,128,0.18)" strokeDasharray="3 3" vertical={false} />
-              <XAxis dataKey="month" tick={{ fill: '#555', fontSize: 10, fontFamily: 'JetBrains Mono' }} axisLine={false} tickLine={false} />
-              <YAxis tick={{ fill: '#555', fontSize: 10, fontFamily: 'JetBrains Mono' }} axisLine={false} tickLine={false} tickFormatter={v => `${v}%`} domain={[0, 100]} />
+              <XAxis dataKey="month" tick={{ fill: '#a8adb8', fontSize: 10, fontFamily: 'Geist Mono, ui-monospace, monospace' }} axisLine={false} tickLine={false} />
+              <YAxis tick={{ fill: '#a8adb8', fontSize: 10, fontFamily: 'Geist Mono, ui-monospace, monospace' }} axisLine={false} tickLine={false} tickFormatter={v => `${v}%`} domain={[0, 100]} />
               <Tooltip {...TP} formatter={(v: number) => [`${v}%`, 'Retención']} itemStyle={{ color: '#60a5fa' }} />
               <Line type="monotone" dataKey="rate" stroke="#60a5fa" strokeWidth={2} dot={{ fill: '#60a5fa', r: 3 }} activeDot={{ r: 5 }} />
             </LineChart>
@@ -109,8 +109,8 @@ export default function Analytics() {
           <ResponsiveContainer width="100%" height={180}>
             <BarChart data={data.weeklyActivity} barGap={2}>
               <CartesianGrid stroke="rgba(128,128,128,0.18)" strokeDasharray="3 3" vertical={false} />
-              <XAxis dataKey="day" tick={{ fill: '#555', fontSize: 10, fontFamily: 'JetBrains Mono' }} axisLine={false} tickLine={false} />
-              <YAxis tick={{ fill: '#555', fontSize: 10, fontFamily: 'JetBrains Mono' }} axisLine={false} tickLine={false} />
+              <XAxis dataKey="day" tick={{ fill: '#a8adb8', fontSize: 10, fontFamily: 'Geist Mono, ui-monospace, monospace' }} axisLine={false} tickLine={false} />
+              <YAxis tick={{ fill: '#a8adb8', fontSize: 10, fontFamily: 'Geist Mono, ui-monospace, monospace' }} axisLine={false} tickLine={false} />
               <Tooltip {...TP} itemStyle={{ color: '#60a5fa' }} />
               <Bar dataKey="sessions" fill="#60a5fa" opacity={0.3} radius={[2, 2, 0, 0]} name="Sesiones" barSize={10} />
               <Bar dataKey="conversions" fill="#60a5fa" opacity={0.9} radius={[2, 2, 0, 0]} name="Conversiones" barSize={10} />

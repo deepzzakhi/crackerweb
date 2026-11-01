@@ -20,7 +20,7 @@ export default function Projects() {
       <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
         <div>
           <p className="font-mono text-xs text-muted mb-1">Dashboard</p>
-          <h1 className="font-display font-bold text-2xl text-text tracking-tight">Proyectos</h1>
+          <h1 className="font-display font-medium text-2xl text-text tracking-tight">Proyectos</h1>
         </div>
         <div className="flex gap-2">
           {(['all', 'active', 'live', 'proposal'] as const).map(f => (
@@ -75,9 +75,9 @@ export default function Projects() {
                   <td className="px-4 py-4">
                     <div className="flex gap-1 flex-wrap">
                       {p.stack.slice(0, 2).map(t => (
-                        <span key={t} className="font-mono text-xs text-muted/60 border border-border px-1.5 py-0.5">{t}</span>
+                        <span key={t} className="font-mono text-xs text-muted border border-border px-1.5 py-0.5">{t}</span>
                       ))}
-                      {p.stack.length > 2 && <span className="font-mono text-xs text-muted/40">+{p.stack.length - 2}</span>}
+                      {p.stack.length > 2 && <span className="font-mono text-xs text-muted">+{p.stack.length - 2}</span>}
                     </div>
                   </td>
                   <td className="px-4 py-4">

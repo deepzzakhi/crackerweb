@@ -13,7 +13,7 @@ export default function KPICard({ kpi, delay = 0 }: Props) {
       className="card p-5"
     >
       <p className="font-mono text-xs text-muted mb-3">{kpi.label}</p>
-      <p className="font-display font-bold text-3xl text-text leading-none mb-3">{kpi.value}</p>
+      <p className="font-display font-medium text-3xl text-text leading-none mb-3">{kpi.value}</p>
       <div className={`inline-flex items-center gap-1 font-mono text-xs px-2 py-1 border ${up ? 'border-accent/30 text-accent bg-accent/5' : 'border-red-500/30 text-red-400 bg-red-500/5'}`}>
         <span>{up ? '↑' : '↓'}</span>
         <span>{up ? '+' : ''}{kpi.change}{kpi.unit === '%' ? 'pp' : ''} este mes</span>

@@ -34,7 +34,7 @@ export default function WhyCracker() {
               className="bg-surface p-8 group hover:bg-background transition-colors duration-300"
             >
               <span className="font-mono text-2xl text-accent/30 group-hover:text-accent transition-colors duration-300 block mb-5">{r.icon}</span>
-              <h3 className="font-display font-bold text-lg text-text mb-3 tracking-tight">{r.title}</h3>
+              <h3 className="font-display font-medium text-lg text-text mb-3 tracking-tight">{r.title}</h3>
               <p className="font-body text-sm text-muted leading-relaxed">{r.desc}</p>
             </motion.div>
           ))}
@@ -54,7 +54,7 @@ export default function WhyCracker() {
             { n: '< 1s', desc: 'Tiempo de carga promedio' },
           ].map((s) => (
             <div key={s.desc}>
-              <p className="font-display font-extrabold text-5xl md:text-7xl text-accent/10 leading-none">{s.n}</p>
+              <p className="font-display font-semibold text-5xl md:text-7xl text-accent/10 leading-none">{s.n}</p>
               <p className="font-mono text-xs text-muted mt-3 leading-relaxed">{s.desc}</p>
             </div>
           ))}

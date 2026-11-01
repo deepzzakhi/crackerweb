@@ -3,6 +3,7 @@ import { NavLink, Outlet, useNavigate } from 'react-router-dom'
 import { useAuthStore } from '../../store/authStore'
 import clsx from 'clsx'
 import ThemeToggle from '../ui/ThemeToggle'
+import Logo from '../ui/Logo'
 
 const NAV = [
   { to: '/dashboard', label: 'Overview', icon: '◈', end: true },
@@ -24,9 +25,7 @@ export default function DashboardLayout() {
         sidebarOpen ? 'translate-x-0' : '-translate-x-full md:translate-x-0'
       )}>
         <div className="h-16 flex items-center justify-between px-5 border-b border-border">
-          <NavLink to="/" className="font-display font-extrabold text-base tracking-tighter text-text">
-            CRACKER<span className="text-accent">_</span>
-          </NavLink>
+          <NavLink to="/" aria-label="Cracker, ir al inicio"><Logo size="sm" /></NavLink>
           <button onClick={() => setSidebarOpen(false)} className="md:hidden text-muted hover:text-text">✕</button>
         </div>
 

@@ -49,7 +49,7 @@ export default function ContactSection() {
           <motion.div initial={{ opacity: 0, x: -24 }} animate={inView ? { opacity: 1, x: 0 } : {}} transition={{ duration: 0.6, delay: 0.1 }}>
             {sent ? (
               <div className="card p-10 text-center">
-                <p className="font-display font-bold text-4xl text-accent mb-3">✓</p>
+                <p className="font-display font-medium text-4xl text-accent mb-3">✓</p>
                 <p className="font-body text-text mb-2">Mensaje recibido.</p>
                 <p className="font-body text-sm text-muted">Te contactamos en menos de 24hs.</p>
               </div>

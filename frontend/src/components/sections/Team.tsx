@@ -29,19 +29,19 @@ export default function Team() {
             >
               {/* Avatar */}
               <div
-                className="w-16 h-16 rounded-sm flex items-center justify-center font-display font-extrabold text-xl mb-5 transition-all duration-300 group-hover:scale-110"
+                className="w-16 h-16 rounded-sm flex items-center justify-center font-display font-semibold text-xl mb-5 transition-all duration-300 group-hover:scale-110"
                 style={{ backgroundColor: `${member.color}15`, color: member.color, border: `1px solid ${member.color}30` }}
               >
                 {member.initials}
               </div>
 
-              <h3 className="font-display font-bold text-base text-text tracking-tight">{member.name}</h3>
+              <h3 className="font-display font-medium text-base text-text tracking-tight">{member.name}</h3>
               <p className="font-mono text-xs mt-1 mb-4" style={{ color: member.color }}>{member.role}</p>
               <p className="font-body text-xs text-muted leading-relaxed mb-4">{member.bio}</p>
 
               <div className="flex flex-wrap gap-1">
                 {member.stack.slice(0, 3).map((t) => (
-                  <span key={t} className="font-mono text-xs text-muted/50 border border-border px-1.5 py-0.5">{t}</span>
+                  <span key={t} className="font-mono text-xs text-muted border border-border px-1.5 py-0.5">{t}</span>
                 ))}
               </div>
 

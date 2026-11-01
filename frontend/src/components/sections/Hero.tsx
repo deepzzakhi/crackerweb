@@ -19,7 +19,7 @@ export default function Hero() {
         </motion.p>
 
         <motion.h1 custom={1} variants={FADE} initial="hidden" animate="show"
-          className="font-display font-extrabold text-4xl sm:text-6xl md:text-7xl leading-tight tracking-tighter text-text mb-5"
+          className="font-display font-semibold text-4xl sm:text-6xl md:text-7xl leading-tight tracking-tight text-text mb-5"
         >
           Construimos el software<br />
           que tu negocio necesita.
@@ -28,7 +28,7 @@ export default function Hero() {
         <motion.p custom={2} variants={FADE} initial="hidden" animate="show"
           className="font-body text-base md:text-lg text-muted max-w-xl mx-auto mb-8 leading-relaxed"
         >
-          Apps web, mobile, SaaS y dashboards. Desde el primer commit hasta producción.
+          Webs, sistemas a medida, automatizaciones y reportes para tu negocio.
         </motion.p>
 
         <motion.div custom={3} variants={FADE} initial="hidden" animate="show"
@@ -52,7 +52,7 @@ export default function Hero() {
             { n: '100%', label: 'On-time' },
           ].map((s) => (
             <div key={s.label} className="text-center">
-              <p className="font-display font-extrabold text-3xl md:text-4xl text-accent-light">{s.n}</p>
+              <p className="font-display font-semibold text-3xl md:text-4xl text-accent-light">{s.n}</p>
               <p className="font-mono text-xs text-muted mt-1 tracking-wider uppercase">{s.label}</p>
             </div>
           ))}

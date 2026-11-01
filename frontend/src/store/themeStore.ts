@@ -8,7 +8,7 @@ function inicial(): Theme {
     const t = localStorage.getItem(KEY)
     if (t === 'light' || t === 'dark') return t
   } catch { /* sin localStorage */ }
-  return window.matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark'
+  return 'dark' // la marca es negra: oscuro por defecto
 }
 
 function aplicar(theme: Theme) {

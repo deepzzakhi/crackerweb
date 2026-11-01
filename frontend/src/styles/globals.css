@@ -6,18 +6,18 @@
   /* Tema oscuro (por defecto). Valores "R G B" para que Tailwind pueda aplicar transparencia. */
   :root {
     color-scheme: dark;
-    --c-bg: 8 8 8;
-    --c-surface: 16 16 16;
-    --c-surface-2: 24 24 24;
-    --c-border: 36 36 36;
-    --c-text: 235 235 235;
-    --c-muted: 128 128 128;
-    --c-accent: 37 99 235;
-    --c-accent-dim: 29 78 216;
-    --c-accent-light: 147 197 253;
+    --c-bg: 0 0 0;
+    --c-surface: 10 10 10;
+    --c-surface-2: 20 20 20;
+    --c-border: 40 40 40;
+    --c-text: 255 255 255;
+    --c-muted: 205 208 214;
+    --c-accent: 41 82 204;
+    --c-accent-dim: 30 58 138;
+    --c-accent-light: 150 182 255;
     --grid-line: 255 255 255;
-    --grid-alpha: 0.025;
-    --scroll-thumb: 42 42 42;
+    --grid-alpha: 0;
+    --scroll-thumb: 48 48 48;
   }
 
   /* Tema claro: azul corporativo del Design System de Cracker */
@@ -27,8 +27,8 @@
     --c-surface: 255 255 255;
     --c-surface-2: 241 245 249;
     --c-border: 226 232 240;
-    --c-text: 15 23 42;
-    --c-muted: 100 116 139;
+    --c-text: 10 12 16;
+    --c-muted: 55 62 75;
     --c-accent: 37 99 235;
     --c-accent-dim: 29 78 216;
     --c-accent-light: 29 78 216;
@@ -47,12 +47,12 @@
     -webkit-font-smoothing: antialiased;
   }
 
-  ::selection { background: #2563eb; color: #ffffff; }
+  ::selection { background: rgb(var(--c-accent)); color: #ffffff; }
 
   ::-webkit-scrollbar { width: 6px; }
   ::-webkit-scrollbar-track { background: rgb(var(--c-surface)); }
   ::-webkit-scrollbar-thumb { background: rgb(var(--scroll-thumb)); border-radius: 3px; }
-  ::-webkit-scrollbar-thumb:hover { background: #2563eb; }
+  ::-webkit-scrollbar-thumb:hover { background: rgb(var(--c-accent)); }
 }
 
 @layer components {
@@ -73,12 +73,12 @@
 
   /* Botones */
   .btn-primary {
-    @apply inline-flex items-center gap-2 px-6 py-3 bg-accent text-background font-display font-bold text-sm tracking-widest uppercase
+    @apply inline-flex items-center gap-2 px-6 py-3 bg-accent text-white font-display font-medium text-sm tracking-widest uppercase
     transition-all duration-200 hover:bg-accent-dim hover:scale-[0.98] active:scale-95;
   }
 
   .btn-secondary {
-    @apply inline-flex items-center gap-2 px-6 py-3 border border-border text-text font-display font-bold text-sm tracking-widest uppercase
+    @apply inline-flex items-center gap-2 px-6 py-3 border border-border text-text font-display font-medium text-sm tracking-widest uppercase
     transition-all duration-200 hover:border-accent hover:text-accent hover:scale-[0.98] active:scale-95;
   }
 
@@ -102,11 +102,11 @@
 
   /* Section title */
   .section-heading {
-    @apply font-display font-extrabold text-4xl md:text-6xl text-text tracking-tighter leading-none;
+    @apply font-display font-medium text-4xl md:text-6xl text-text tracking-tight leading-[1.05];
   }
 
   .section-label {
-    @apply font-mono text-accent text-xs tracking-[0.3em] uppercase;
+    @apply font-mono text-accent-light text-xs tracking-[0.3em] uppercase;
   }
 
   /* Badge */
@@ -128,6 +128,6 @@
 
   /* Número grande decorativo */
   .stat-number {
-    @apply font-display font-extrabold text-7xl md:text-9xl text-accent/10 leading-none select-none;
+    @apply font-display font-medium text-7xl md:text-9xl text-accent/10 leading-none select-none;
   }
 }

@@ -25,17 +25,17 @@ export default function TeamPage() {
               className="card p-8 flex gap-6"
             >
               <div
-                className="w-20 h-20 flex-shrink-0 flex items-center justify-center font-display font-extrabold text-2xl rounded-sm"
+                className="w-20 h-20 flex-shrink-0 flex items-center justify-center font-display font-semibold text-2xl rounded-sm"
                 style={{ backgroundColor: `${member.color}15`, color: member.color, border: `1px solid ${member.color}30` }}
               >
                 {member.initials}
               </div>
               <div className="flex-1 min-w-0">
-                <h3 className="font-display font-bold text-xl text-text tracking-tight">{member.name}</h3>
+                <h3 className="font-display font-medium text-xl text-text tracking-tight">{member.name}</h3>
                 <p className="font-mono text-xs mt-1 mb-4" style={{ color: member.color }}>{member.role}</p>
                 <p className="font-body text-sm text-muted leading-relaxed mb-5">{member.bio}</p>
                 <div className="flex flex-wrap gap-1.5 mb-4">
-                  {member.stack.map(t => <span key={t} className="font-mono text-xs text-muted/60 border border-border px-2 py-0.5">{t}</span>)}
+                  {member.stack.map(t => <span key={t} className="font-mono text-xs text-muted border border-border px-2 py-0.5">{t}</span>)}
                 </div>
                 {member.github && (
                   <div className="flex gap-4">

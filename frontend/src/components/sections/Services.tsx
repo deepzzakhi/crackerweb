@@ -31,20 +31,20 @@ export default function Services() {
             >
               <div className="flex items-start justify-between mb-6">
                 <span className="font-mono text-3xl text-accent/40 group-hover:text-accent transition-colors duration-300">{s.icon}</span>
-                <span className="font-mono text-xs text-muted/40">{String(i + 1).padStart(2, '0')}</span>
+                <span className="font-mono text-xs text-muted">{String(i + 1).padStart(2, '0')}</span>
               </div>
-              <h3 className="font-display font-bold text-2xl text-text mb-3 tracking-tight">{s.title}</h3>
+              <h3 className="font-display font-medium text-2xl text-text mb-3 tracking-tight">{s.title}</h3>
               <p className="font-body text-muted text-sm leading-relaxed mb-6">{s.short}</p>
               <div className="flex flex-wrap gap-2 mb-6">
                 {s.stack.slice(0, 4).map((tech) => (
-                  <span key={tech} className="font-mono text-xs text-muted/60 border border-border px-2 py-0.5">{tech}</span>
+                  <span key={tech} className="font-mono text-xs text-muted border border-border px-2 py-0.5">{tech}</span>
                 ))}
               </div>
               <div className="flex items-center gap-4">
                 <Link to={`/servicios#${s.id}`} className="font-body text-sm text-accent hover:text-accent-dim transition-colors flex items-center gap-1">
                   Ver detalle →
                 </Link>
-                <span className="font-mono text-xs text-muted/40">{s.timeline}</span>
+                <span className="font-mono text-xs text-muted">{s.timeline}</span>
               </div>
             </motion.div>
           ))}

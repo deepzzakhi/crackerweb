@@ -33,7 +33,7 @@ export default function Services() {
                   <span className="font-mono text-3xl text-accent">{s.icon}</span>
                   <span className="font-mono text-xs text-muted">{String(i + 1).padStart(2, '0')}</span>
                 </div>
-                <h2 className="font-display font-bold text-4xl text-text tracking-tight mb-4">{s.title}</h2>
+                <h2 className="font-display font-medium text-4xl text-text tracking-tight mb-4">{s.title}</h2>
                 <p className="font-body text-muted leading-relaxed mb-8">{s.description}</p>
                 <div className="flex items-center gap-4 mb-8">
                   <span className="font-mono text-xs text-muted border border-border px-3 py-1.5">Timeline: {s.timeline}</span>
@@ -69,8 +69,8 @@ export default function Services() {
           <div className="grid grid-cols-1 md:grid-cols-5 gap-6">
             {PROCESS.map((step) => (
               <div key={step.step} className="relative">
-                <p className="font-display font-extrabold text-6xl text-accent/10 leading-none mb-4">{step.step}</p>
-                <h3 className="font-display font-bold text-lg text-text mb-2">{step.title}</h3>
+                <p className="font-display font-semibold text-6xl text-accent/10 leading-none mb-4">{step.step}</p>
+                <h3 className="font-display font-medium text-lg text-text mb-2">{step.title}</h3>
                 <p className="font-body text-xs text-muted leading-relaxed">{step.desc}</p>
               </div>
             ))}

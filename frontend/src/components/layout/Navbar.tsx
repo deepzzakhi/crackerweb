@@ -4,6 +4,7 @@ import { motion, AnimatePresence } from 'framer-motion'
 import { useAuthStore } from '../../store/authStore'
 import clsx from 'clsx'
 import ThemeToggle from '../ui/ThemeToggle'
+import Logo from '../ui/Logo'
 
 const LINKS = [
   { to: '/servicios', label: 'Servicios' },
@@ -36,9 +37,7 @@ export default function Navbar() {
     )}>
       <nav className="max-w-7xl mx-auto px-4 md:px-8 h-16 flex items-center justify-between">
         {/* Logo */}
-        <Link to="/" className="font-display font-extrabold text-xl tracking-tighter text-text hover:text-accent transition-colors">
-          CRACKER<span className="text-accent animate-blink">_</span>
-        </Link>
+        <Link to="/" aria-label="Cracker, ir al inicio" className="hover:opacity-80 transition-opacity"><Logo /></Link>
 
         {/* Desktop links */}
         <div className="hidden md:flex items-center gap-8">

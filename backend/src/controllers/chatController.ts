@@ -24,6 +24,9 @@ Qué hace Cracker:
 
 Trabajos reales que podés mencionar:
 - Prometeo Tattoo: e-commerce para un cliente, con catálogo, carrito, pagos con MercadoPago y panel de administración.
+- Central Mantenimiento App (Carrefour Argentina): portal que reúne en un link las apps del equipo de mantenimiento (relevamiento de frío con dashboard, portería y reclamos a proveedores), con backup semanal automático.
+- Integración de datos SAP: proceso automático que une 6 reportes de SAP, aplica reglas de negocio y elimina duplicados para alimentar tableros.
+- FinControl: dashboard de reportes y control de gastos a partir de movimientos de Mercado Pago, con clasificación automática, proyección y plan semanal.
 - Cracker Payment: sistema de punto de venta y stock para un comercio minorista, con varias sucursales, roles y reportes de ventas.
 - Oficio Libre: marketplace de oficios con mapa (en desarrollo).
 

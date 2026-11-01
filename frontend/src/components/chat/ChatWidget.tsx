@@ -98,7 +98,7 @@ export default function ChatWidget() {
           >
             <header className="flex items-center justify-between gap-2 px-4 h-14 border-b border-border shrink-0">
               <div className="min-w-0">
-                <p className="font-display font-bold text-sm text-text">Asistente Cracker</p>
+                <p className="font-display font-medium text-sm text-text">Asistente Cracker</p>
                 <p className="font-mono text-[10px] text-muted truncate">{sinIA ? 'Te atiende el equipo por WhatsApp' : 'Respuestas con IA · el equipo sigue por WhatsApp'}</p>
               </div>
               <div className="flex items-center gap-1">
@@ -139,7 +139,7 @@ export default function ChatWidget() {
             </div>
 
             <a href={linkWhatsApp(mensajes)} target="_blank" rel="noopener noreferrer"
-              className="mx-4 mb-3 inline-flex items-center justify-center gap-2 bg-[#25D366] hover:bg-[#1ebe5a] text-white font-display font-bold text-xs tracking-widest uppercase py-2.5 transition-colors">
+              className="mx-4 mb-3 inline-flex items-center justify-center gap-2 bg-[#25D366] hover:bg-[#1ebe5a] text-white font-display font-medium text-xs tracking-widest uppercase py-2.5 transition-colors">
               <IconoWhatsApp /> Seguir por WhatsApp
             </a>
 

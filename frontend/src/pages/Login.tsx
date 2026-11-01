@@ -3,6 +3,7 @@ import { useNavigate, Link } from 'react-router-dom'
 import { GoogleLogin, GoogleOAuthProvider } from '@react-oauth/google'
 import { useAuthStore } from '../store/authStore'
 import api from '../services/api'
+import Logo from '../components/ui/Logo'
 
 const GOOGLE_CLIENT_ID = import.meta.env.VITE_GOOGLE_CLIENT_ID ?? ''
 
@@ -50,12 +51,10 @@ function LoginContent() {
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[400px] h-[400px] rounded-full bg-accent/3 blur-[100px] pointer-events-none" />
 
       <div className="relative z-10 max-w-sm w-full">
-        <Link to="/" className="font-display font-extrabold text-2xl tracking-tighter text-text block text-center mb-12">
-          CRACKER<span className="text-accent animate-blink">_</span>
-        </Link>
+        <Link to="/" aria-label="Cracker, ir al inicio" className="flex justify-center mb-12"><Logo size="lg" /></Link>
 
         <div className="card p-8">
-          <h1 className="font-display font-bold text-2xl text-text tracking-tight mb-2">Acceder al dashboard</h1>
+          <h1 className="font-display font-medium text-2xl text-text tracking-tight mb-2">Acceder al dashboard</h1>
           <p className="font-body text-sm text-muted mb-8 leading-relaxed">
             Ingresá con tu cuenta de Google para ver el demo de lo que Cracker construye.
           </p>

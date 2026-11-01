@@ -18,7 +18,7 @@ const TRANSACTIONS = [
   { concepto: 'Servidor Railway + Vercel', categoria: 'Infra', monto: -3200, fecha: '10/03', tipo: 'gasto' },
   { concepto: 'Pago suscripción Cliente B', categoria: 'Ingreso', monto: 28500, fecha: '08/03', tipo: 'ingreso' },
   { concepto: 'Herramientas SaaS (Figma, Notion)', categoria: 'Software', monto: -1800, fecha: '07/03', tipo: 'gasto' },
-  { concepto: 'Consultoría — RetailCorp', categoria: 'Ingreso', monto: 65000, fecha: '05/03', tipo: 'ingreso' },
+  { concepto: 'Consultoría — Cliente C', categoria: 'Ingreso', monto: 65000, fecha: '05/03', tipo: 'ingreso' },
   { concepto: 'Publicidad LinkedIn Ads', categoria: 'Marketing', monto: -8400, fecha: '03/03', tipo: 'gasto' },
 ]
 
@@ -47,10 +47,29 @@ const PIE_DATA = [
   { name: 'Otros', value: 3, monto: '$8.900' },
 ]
 
-const PIE_COLORS = ['#2563eb', '#1d4ed8', '#3b82f6', '#60a5fa', '#93c5fd', '#bfdbfe']
+// Azul, marino, celeste, blanco, lavanda y cielo: distintos entre sí y con contraste sobre negro.
+// Verde y rojo quedan reservados para ingresos/gastos y subas/bajas.
+const PIE_COLORS = ['#3b6fe0', '#1e3a8a', '#93c5fd', '#f1f5f9', '#a5b4fc', '#38bdf8']
+const PIE_TEXT = ['#ffffff', '#ffffff', '#0b1220', '#0b1220', '#0b1220', '#0b1220']
+const INGRESOS = '#22c55e'
+const GASTOS = '#ef4444'
+const TICK = { fill: '#c9ccd3', fontSize: 11, fontFamily: 'Geist Mono, ui-monospace, monospace' }
+
+// Porcentaje dentro de cada porción (se omite en las porciones muy chicas)
+const RAD = Math.PI / 180
+const pieLabel = ({ cx, cy, midAngle, innerRadius, outerRadius, value, index }: { cx: number; cy: number; midAngle: number; innerRadius: number; outerRadius: number; value: number; index: number }) => {
+  if (value < 5) return null
+  const r = innerRadius + (outerRadius - innerRadius) / 2
+  return (
+    <text x={cx + r * Math.cos(-midAngle * RAD)} y={cy + r * Math.sin(-midAngle * RAD)} fill={PIE_TEXT[index]}
+      textAnchor="middle" dominantBaseline="central" fontSize={13} fontWeight={600} fontFamily="Geist, system-ui, sans-serif">
+      {value}%
+    </text>
+  )
+}
 
 const TP = {
-  contentStyle: { background: 'rgb(var(--c-surface))', border: '1px solid rgb(var(--c-border))', borderRadius: 0, fontFamily: 'DM Sans', fontSize: 12 },
+  contentStyle: { background: 'rgb(var(--c-surface))', border: '1px solid rgb(var(--c-border))', borderRadius: 0, fontFamily: 'Geist, system-ui, sans-serif', fontSize: 12 },
   labelStyle: { color: 'rgb(var(--c-text))' },
 }
 
@@ -103,7 +122,7 @@ export default function SobreNosotros() {
             {/* Title bar */}
             <div className="border-b border-border px-6 py-4 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2">
               <div>
-                <h3 className="font-display font-bold text-base text-text tracking-tight">
+                <h3 className="font-display font-medium text-base text-text tracking-tight">
                   Llevá el control de los gastos de tu emprendimiento o empresa
                 </h3>
                 <p className="font-mono text-xs text-muted mt-0.5">Mi Empresa SRL · Marzo 2026</p>
@@ -119,7 +138,7 @@ export default function SobreNosotros() {
                 {KPIS.map((k) => (
                   <div key={k.label} className="bg-surface-2 border border-border p-4 rounded-sm">
                     <p className="font-mono text-xs text-muted mb-2">{k.label}</p>
-                    <p className="font-display font-bold text-xl text-text leading-none">{k.value}</p>
+                    <p className="font-display font-medium text-xl text-text leading-none">{k.value}</p>
                     <p className={`font-mono text-xs mt-2 ${k.up ? 'text-emerald-400' : 'text-red-400'}`}>
                       {k.up ? '↑' : '↓'} vs mes anterior
                     </p>
@@ -167,7 +186,7 @@ export default function SobreNosotros() {
         >
           <div className="card overflow-hidden">
             <div className="border-b border-border px-6 py-4">
-              <h3 className="font-display font-bold text-base text-text tracking-tight">
+              <h3 className="font-display font-medium text-base text-text tracking-tight">
                 Analizá tendencias anuales y tomá mejores decisiones
               </h3>
               <p className="font-mono text-xs text-muted mt-0.5">Ingresos vs Gastos · Distribución por área</p>
@@ -178,26 +197,27 @@ export default function SobreNosotros() {
               <div>
                 <p className="font-body text-sm text-text mb-1">Ingresos vs Gastos anuales</p>
                 <p className="font-mono text-xs text-muted mb-4">Evolución mensual 2026</p>
-                <ResponsiveContainer width="100%" height={220}>
-                  <BarChart data={MONTHLY} barGap={2} barSize={10}>
-                    <CartesianGrid stroke="rgba(128,128,128,0.18)" strokeDasharray="3 3" vertical={false} />
-                    <XAxis dataKey="mes" tick={{ fill: '#555', fontSize: 10, fontFamily: 'JetBrains Mono' }} axisLine={false} tickLine={false} />
-                    <YAxis tick={{ fill: '#555', fontSize: 10, fontFamily: 'JetBrains Mono' }} axisLine={false} tickLine={false} tickFormatter={v => `$${(v / 1000).toFixed(0)}K`} width={48} />
+                <ResponsiveContainer width="100%" height={280}>
+                  <BarChart data={MONTHLY} barGap={3} barCategoryGap="18%">
+                    <CartesianGrid stroke="rgba(255,255,255,0.08)" strokeDasharray="3 3" vertical={false} />
+                    <XAxis dataKey="mes" tick={TICK} axisLine={false} tickLine={false} />
+                    <YAxis tick={TICK} axisLine={false} tickLine={false} tickFormatter={v => `$${(v / 1000).toFixed(0)}K`} width={52} />
                     <Tooltip
                       {...TP}
+                      cursor={{ fill: 'rgba(255,255,255,0.05)' }}
                       formatter={(v: number, name: string) => [`$${(v / 1000).toFixed(1)}K`, name === 'ingresos' ? 'Ingresos' : 'Gastos']}
                     />
-                    <Bar dataKey="ingresos" fill="#2563eb" opacity={0.85} radius={[2, 2, 0, 0]} name="ingresos" />
-                    <Bar dataKey="gastos" fill="#60a5fa" opacity={0.45} radius={[2, 2, 0, 0]} name="gastos" />
+                    <Bar dataKey="ingresos" fill={INGRESOS} radius={[3, 3, 0, 0]} name="ingresos" />
+                    <Bar dataKey="gastos" fill={GASTOS} radius={[3, 3, 0, 0]} name="gastos" />
                   </BarChart>
                 </ResponsiveContainer>
                 <div className="flex gap-4 mt-3">
                   <div className="flex items-center gap-1.5">
-                    <span className="w-3 h-2 rounded-sm bg-[#2563eb]" />
+                    <span className="w-3 h-3 rounded-sm" style={{ background: INGRESOS }} />
                     <span className="font-mono text-xs text-muted">Ingresos</span>
                   </div>
                   <div className="flex items-center gap-1.5">
-                    <span className="w-3 h-2 rounded-sm bg-[#60a5fa] opacity-60" />
+                    <span className="w-3 h-3 rounded-sm" style={{ background: GASTOS }} />
                     <span className="font-mono text-xs text-muted">Gastos</span>
                   </div>
                 </div>
@@ -207,17 +227,22 @@ export default function SobreNosotros() {
               <div>
                 <p className="font-body text-sm text-text mb-1">Distribución por área de negocio</p>
                 <p className="font-mono text-xs text-muted mb-4">% del total de ingresos</p>
-                <div className="flex items-center gap-4">
-                  <ResponsiveContainer width={160} height={160}>
+                <div className="flex flex-col sm:flex-row items-center gap-6">
+                  <ResponsiveContainer width={260} height={260} className="flex-none">
                     <PieChart>
                       <Pie
                         data={PIE_DATA}
                         cx="50%"
                         cy="50%"
-                        innerRadius={45}
-                        outerRadius={72}
+                        innerRadius={68}
+                        outerRadius={124}
+                        paddingAngle={1.5}
                         dataKey="value"
-                        strokeWidth={0}
+                        stroke="rgb(var(--c-surface))"
+                        strokeWidth={2}
+                        label={pieLabel}
+                        labelLine={false}
+                        isAnimationActive={false}
                       >
                         {PIE_DATA.map((_, i) => (
                           <Cell key={i} fill={PIE_COLORS[i % PIE_COLORS.length]} />
@@ -229,12 +254,13 @@ export default function SobreNosotros() {
                       />
                     </PieChart>
                   </ResponsiveContainer>
-                  <div className="flex-1 space-y-1.5">
+                  <div className="flex-1 w-full min-w-0 space-y-2.5">
                     {PIE_DATA.map((d, i) => (
-                      <div key={d.name} className="flex items-center gap-2">
-                        <span className="w-2 h-2 rounded-sm flex-shrink-0" style={{ backgroundColor: PIE_COLORS[i] }} />
-                        <span className="font-body text-xs text-muted flex-1 min-w-0 truncate">{d.name}</span>
-                        <span className="font-mono text-xs text-text">{d.value}%</span>
+                      <div key={d.name} className="flex items-center gap-2.5">
+                        <span className="w-3 h-3 rounded-sm flex-shrink-0" style={{ backgroundColor: PIE_COLORS[i] }} />
+                        <span className="font-body text-sm text-text flex-1 min-w-0 truncate">{d.name}</span>
+                        <span className="font-mono text-xs text-muted tabular-nums">{d.monto}</span>
+                        <span className="font-mono text-sm text-text w-10 text-right tabular-nums">{d.value}%</span>
                       </div>
                     ))}
                   </div>

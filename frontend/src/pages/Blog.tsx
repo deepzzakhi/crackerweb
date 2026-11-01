@@ -8,7 +8,7 @@ export default function Blog() {
       <div className="absolute inset-0 bg-grid pointer-events-none" />
       <div className="relative z-10 text-center max-w-md">
         <p className="font-mono text-accent text-xs tracking-[0.3em] mb-6">PRÓXIMAMENTE</p>
-        <h1 className="font-display font-extrabold text-6xl text-text tracking-tighter mb-6">Blog</h1>
+        <h1 className="font-display font-semibold text-6xl text-text tracking-tight mb-6">Blog</h1>
         <p className="font-body text-muted mb-8 leading-relaxed">
           Casos de estudio, arquitectura de software, lecciones aprendidas en proyectos reales.
         </p>

@@ -1,5 +1,6 @@
 import { Link } from 'react-router-dom'
 import { EMAIL, WHATSAPP_LABEL, whatsappLink } from '../../data/contact'
+import Logo from '../ui/Logo'
 
 export default function Footer() {
   return (
@@ -7,9 +8,7 @@ export default function Footer() {
       <div className="max-w-7xl mx-auto px-4 md:px-8 py-16">
         <div className="grid grid-cols-1 md:grid-cols-4 gap-12 mb-12">
           <div className="md:col-span-2">
-            <Link to="/" className="font-display font-extrabold text-2xl tracking-tighter text-text">
-              CRACKER<span className="text-accent">_</span>
-            </Link>
+            <Link to="/" aria-label="Cracker, ir al inicio"><Logo size="lg" /></Link>
             <p className="font-body text-sm text-muted mt-3 max-w-xs leading-relaxed">
               Construimos el software que tu negocio necesita para crecer. Desde MVPs hasta sistemas empresariales.
             </p>
@@ -38,7 +37,7 @@ export default function Footer() {
         </div>
         <div className="border-t border-border pt-6 flex flex-col md:flex-row items-center justify-between gap-3">
           <p className="font-mono text-xs text-muted">© 2026 Cracker Software. Todos los derechos reservados.</p>
-          <p className="font-mono text-xs text-muted/40">Construido con React + Node.js + PostgreSQL</p>
+          <p className="font-mono text-xs text-muted">Construido con React + Node.js + PostgreSQL</p>
         </div>
       </div>
     </footer>

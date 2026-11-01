@@ -27,13 +27,13 @@ export default function Products() {
               <div className="absolute top-0 left-0 w-full h-0.5" style={{ background: `linear-gradient(90deg, transparent, ${p.color}33, transparent)` }} />
 
               <div className="flex items-start justify-between mb-6">
-                <div className="w-10 h-10 border flex items-center justify-center font-display font-bold text-sm" style={{ borderColor: `${p.color}40`, color: p.color }}>
+                <div className="w-10 h-10 border flex items-center justify-center font-display font-medium text-sm" style={{ borderColor: `${p.color}40`, color: p.color }}>
                   {p.name.charAt(0)}
                 </div>
                 <Badge status={p.status} />
               </div>
 
-              <h3 className="font-display font-bold text-xl text-text mb-1 tracking-tight">{p.name}</h3>
+              <h3 className="font-display font-medium text-xl text-text mb-1 tracking-tight">{p.name}</h3>
               <p className="font-mono text-xs mb-4" style={{ color: p.color }}>{p.tagline}</p>
               <p className="font-body text-sm text-muted leading-relaxed flex-1 mb-6">{p.description}</p>
 

@@ -8,7 +8,7 @@ interface ReportsData {
 }
 
 const TP = {
-  contentStyle: { background: 'rgb(var(--c-surface))', border: '1px solid rgb(var(--c-border))', borderRadius: 0, fontFamily: 'DM Sans', fontSize: 12 },
+  contentStyle: { background: 'rgb(var(--c-surface))', border: '1px solid rgb(var(--c-border))', borderRadius: 0, fontFamily: 'Geist, system-ui, sans-serif', fontSize: 12 },
   labelStyle: { color: 'rgb(var(--c-text))' },
 }
 
@@ -30,7 +30,7 @@ export default function Reports() {
       <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
         <div>
           <p className="font-mono text-xs text-muted mb-1">Dashboard</p>
-          <h1 className="font-display font-bold text-2xl text-text tracking-tight">Reportes</h1>
+          <h1 className="font-display font-medium text-2xl text-text tracking-tight">Reportes</h1>
         </div>
         <button className="btn-secondary text-xs py-2 px-4 self-start">
           Exportar CSV ↓
@@ -47,7 +47,7 @@ export default function Reports() {
         ].map(k => (
           <div key={k.label} className="card p-5">
             <p className="font-mono text-xs text-muted mb-2">{k.label}</p>
-            <p className="font-display font-bold text-2xl text-text">{k.value}</p>
+            <p className="font-display font-medium text-2xl text-text">{k.value}</p>
           </div>
         ))}
       </div>
@@ -60,8 +60,8 @@ export default function Reports() {
           <ResponsiveContainer width="100%" height={220}>
             <BarChart data={data.monthly} barGap={2}>
               <CartesianGrid stroke="rgba(128,128,128,0.18)" strokeDasharray="3 3" vertical={false} />
-              <XAxis dataKey="month" tick={{ fill: '#555', fontSize: 10, fontFamily: 'JetBrains Mono' }} axisLine={false} tickLine={false} />
-              <YAxis tick={{ fill: '#555', fontSize: 10, fontFamily: 'JetBrains Mono' }} axisLine={false} tickLine={false} tickFormatter={v => `$${(v/1000).toFixed(0)}K`} />
+              <XAxis dataKey="month" tick={{ fill: '#a8adb8', fontSize: 10, fontFamily: 'Geist Mono, ui-monospace, monospace' }} axisLine={false} tickLine={false} />
+              <YAxis tick={{ fill: '#a8adb8', fontSize: 10, fontFamily: 'Geist Mono, ui-monospace, monospace' }} axisLine={false} tickLine={false} tickFormatter={v => `$${(v/1000).toFixed(0)}K`} />
               <Tooltip {...TP} formatter={(v: number) => [`$${(v/1000).toFixed(1)}K`]} itemStyle={{ color: '#60a5fa' }} />
               <Bar dataKey="value" fill="#60a5fa" opacity={0.25} radius={[2, 2, 0, 0]} name="Revenue" barSize={14} />
               <Bar dataKey="expenses" fill="#F97316" opacity={0.5} radius={[2, 2, 0, 0]} name="Gastos" barSize={14} />

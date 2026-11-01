@@ -37,7 +37,7 @@ export default function UserStories() {
 
               {/* Author */}
               <div className="flex items-center gap-3 border-t border-border pt-5">
-                <div className="w-9 h-9 rounded-full bg-accent/10 flex items-center justify-center font-display font-bold text-xs text-accent">
+                <div className="w-9 h-9 rounded-full bg-accent/10 flex items-center justify-center font-display font-medium text-xs text-accent">
                   {story.avatar}
                 </div>
                 <div>

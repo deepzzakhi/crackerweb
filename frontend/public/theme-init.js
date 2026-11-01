@@ -3,7 +3,7 @@
 (function () {
   try {
     var t = localStorage.getItem('cracker-theme')
-    if (t !== 'light' && t !== 'dark') t = window.matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark'
+    if (t !== 'light' && t !== 'dark') t = 'dark' // la marca es negra: oscuro por defecto
     document.documentElement.classList.toggle('light', t === 'light')
   } catch (e) { /* sin acceso a localStorage: queda el oscuro */ }
 })()
