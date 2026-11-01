@@ -1,24 +1,25 @@
 import { Request, Response } from 'express'
-import { PrismaClient } from '@prisma/client'
 import { z } from 'zod'
+import { prisma } from '../config/prisma'
 
-const prisma = new PrismaClient()
-
+// Límites de largo para que nadie llene la base con mensajes gigantes
 const contactSchema = z.object({
-  name: z.string().min(2),
-  email: z.string().email(),
-  projectType: z.string().min(1),
-  message: z.string().min(10),
+  name: z.string().trim().min(2).max(100),
+  email: z.string().trim().email().max(200),
+  projectType: z.string().trim().min(1).max(60),
+  message: z.string().trim().min(10).max(5000),
+  website: z.string().max(0).optional(), // honeypot: campo oculto que solo completan los bots
 })
 
 export async function createContact(req: Request, res: Response) {
   const result = contactSchema.safeParse(req.body)
   if (!result.success) {
-    res.status(400).json({ success: false, message: 'Datos inválidos', errors: result.error.flatten() })
+    res.status(400).json({ success: false, message: 'Datos inválidos' })
     return
   }
-
-  const msg = await prisma.contactMessage.create({ data: result.data })
-  console.log(`[contact] Nuevo mensaje de ${msg.email} — ${msg.projectType}`)
+  const { website: _honeypot, ...data } = result.data
+  await prisma.contactMessage.create({ data })
+  // Sin el email en el log: es un dato personal
+  console.log(`[contact] Nuevo mensaje — ${data.projectType}`)
   res.json({ success: true, message: 'Mensaje recibido. Te contactamos pronto.' })
 }

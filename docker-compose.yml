@@ -7,10 +7,13 @@ services:
     restart: unless-stopped
     environment:
       POSTGRES_USER: cracker
-      POSTGRES_PASSWORD: "*****"
+      # La contraseña sale del .env de la raíz (no se sube al repo)
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:?Definí POSTGRES_PASSWORD en el .env}
       POSTGRES_DB: cracker_db
+    # Solo localhost: la DB nunca debe quedar expuesta a internet.
+    # En producción usar una DB gestionada (Neon/Supabase) con TLS.
     ports:
-      - '5435:5432'
+      - '127.0.0.1:5435:5432'
     volumes:
       - postgres_data:/var/lib/postgresql/data
     healthcheck:

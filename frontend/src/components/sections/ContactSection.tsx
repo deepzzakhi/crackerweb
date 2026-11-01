@@ -8,7 +8,8 @@ const PROJECT_TYPES = ['Desarrollo Web', 'App Mobile', 'Producto SaaS', 'Dashboa
 export default function ContactSection() {
   const ref = useRef(null)
   const inView = useInView(ref, { once: true, margin: '-80px' })
-  const [form, setForm] = useState({ name: '', email: '', projectType: '', message: '' })
+  // `website` es un campo trampa oculto: si llega completo, es un bot y el servidor lo rechaza
+  const [form, setForm] = useState({ name: '', email: '', projectType: '', message: '', website: '' })
   const [sending, setSending] = useState(false)
   const [sent, setSent] = useState(false)
   const [error, setError] = useState('')
@@ -24,8 +25,11 @@ export default function ContactSection() {
     try {
       await api.post('/contact', form)
       setSent(true)
-    } catch {
-      setError('Error al enviar. Escribinos a hola@cracker.dev')
+    } catch (err) {
+      const status = (err as { response?: { status?: number } }).response?.status
+      setError(status === 429 ? 'Enviaste varios mensajes seguidos. Probá más tarde.'
+        : status === 400 ? 'Revisá los datos: el mensaje necesita al menos 10 caracteres.'
+        : 'No se pudo enviar. Probá de nuevo en un minuto.')
     } finally {
       setSending(false)
     }
@@ -67,8 +71,13 @@ export default function ContactSection() {
                   {PROJECT_TYPES.map(t => <option key={t} value={t}>{t}</option>)}
                 </select>
                 <textarea
-                  className="input h-32 resize-none" placeholder="Contanos de tu proyecto..."
+                  className="input h-32 resize-none" placeholder="Contanos de tu proyecto..." maxLength={5000}
                   value={form.message} onChange={e => setForm({ ...form, message: e.target.value })}
+                />
+                <input
+                  type="text" name="website" tabIndex={-1} autoComplete="off" aria-hidden="true"
+                  className="absolute -left-[9999px] h-0 w-0 opacity-0"
+                  value={form.website} onChange={e => setForm({ ...form, website: e.target.value })}
                 />
                 <button type="submit" className="btn-primary w-full justify-center" disabled={sending}>
                   {sending ? 'Enviando...' : 'Enviar mensaje →'}

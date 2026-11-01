@@ -1,4 +1,4 @@
-import { useEffect } from 'react'
+import { useEffect, useState } from 'react'
 import { useNavigate, Link } from 'react-router-dom'
 import { GoogleLogin, GoogleOAuthProvider } from '@react-oauth/google'
 import { useAuthStore } from '../store/authStore'
@@ -15,6 +15,9 @@ function LoginContent() {
     if (isAuthenticated) navigate('/dashboard')
   }, [isAuthenticated, navigate])
 
+  const [error, setError] = useState('')
+  const [entrando, setEntrando] = useState(false)
+
   const handleSuccess = async (credentialResponse: { credential?: string }) => {
     if (!credentialResponse.credential) return
     try {
@@ -22,7 +25,22 @@ function LoginContent() {
       setAuth(data.user, data.token)
       navigate('/dashboard')
     } catch {
-      console.error('Error de autenticación')
+      setError('No se pudo ingresar con Google. Probá de nuevo.')
+    }
+  }
+
+  // La demo pide al servidor un token firmado que vence en 2 h (ya no hay token fijo)
+  const entrarDemo = async () => {
+    setEntrando(true)
+    setError('')
+    try {
+      const { data } = await api.post('/auth/demo')
+      setAuth(data.user, data.token)
+      navigate('/dashboard')
+    } catch {
+      setError('La demo no está disponible ahora. Probá en un minuto (el servidor puede estar despertando).')
+    } finally {
+      setEntrando(false)
     }
   }
 
@@ -43,31 +61,21 @@ function LoginContent() {
           </p>
 
           <div className="space-y-4">
-            {GOOGLE_CLIENT_ID ? (
+            {error && <p className="font-mono text-xs text-red-400 border border-red-800/40 bg-red-900/10 px-4 py-2">{error}</p>}
+            {GOOGLE_CLIENT_ID && (
               <GoogleLogin
                 onSuccess={handleSuccess}
-                onError={() => console.error('Google login error')}
+                onError={() => setError('No se pudo ingresar con Google. Probá de nuevo.')}
                 theme="filled_black"
                 size="large"
                 width="100%"
                 text="continue_with"
                 shape="rectangular"
               />
-            ) : (
-              <div className="border border-border p-4 text-center">
-                <p className="font-mono text-xs text-muted mb-2">Google OAuth no configurado</p>
-                <p className="font-mono text-xs text-muted/50">Agregá VITE_GOOGLE_CLIENT_ID en .env</p>
-                <button
-                  onClick={() => {
-                    setAuth({ id: 'demo', name: 'Demo User', email: 'demo@cracker.dev', role: 'USER' }, 'demo-token')
-                    navigate('/dashboard')
-                  }}
-                  className="btn-primary w-full justify-center mt-4 text-xs"
-                >
-                  Entrar en modo demo →
-                </button>
-              </div>
             )}
+            <button onClick={entrarDemo} disabled={entrando} className="btn-primary w-full justify-center text-xs">
+              {entrando ? 'Entrando…' : 'Entrar en modo demo →'}
+            </button>
           </div>
 
           <p className="font-body text-xs text-muted text-center mt-6">
