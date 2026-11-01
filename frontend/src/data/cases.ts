@@ -45,46 +45,4 @@ export const CASES = [
     stack: ['Google Apps Script', 'Google Sheets', 'SAP', 'Python', 'Looker Studio'],
     color: '#fdba74',
   },
-  {
-    id: 'control-gastos',
-    title: 'FinControl',
-    category: 'Reportes y control de gastos',
-    client: 'Producto propio — finanzas personales',
-    description: 'Dashboard de gastos que toma los movimientos exportados de Mercado Pago, los clasifica con reglas propias y muestra en qué se va la plata: KPIs, tendencias, compromisos del mes y proyección. Suma un plan con "cajas", tope semanal y seguimiento de deudas para decidir cada semana.',
-    result: 'Gastos sin clasificar: de 36% a 14%',
-    metrics: [
-      { label: 'Movimientos', value: '1.600+' },
-      { label: 'Sin clasificar', value: '36% → 14%' },
-      { label: 'Revisión', value: 'Semanal' },
-    ],
-    stack: ['JavaScript', 'Chart.js', 'Google Sheets', 'Apps Script', 'Mercado Pago'],
-    color: '#d8b4fe',
-  },
-]
-
-export const USER_STORIES = [
-  {
-    quote: 'Cracker entregó el e-commerce en 6 semanas. El primer mes ya recuperamos la inversión. El panel de admin es tan intuitivo que mi equipo lo usa sin capacitación.',
-    author: 'Valentina R.',
-    role: 'Dueña',
-    company: 'Prometeo Tattoo',
-    avatar: 'VR',
-    result: '+340% ventas',
-  },
-  {
-    quote: 'Necesitábamos visibilidad en tiempo real de 200 locales. En 3 meses teníamos un dashboard que nunca imaginamos tener. El equipo de Cracker entiende el negocio, no solo el código.',
-    author: 'Martín G.',
-    role: 'Director de Operaciones',
-    company: 'RetailCorp',
-    avatar: 'MG',
-    result: '-60% reporting time',
-  },
-  {
-    quote: 'La arquitectura que diseñaron nos permitió pasar de MVP a 1.000 usuarios sin tocar infraestructura. Eso tiene un valor enorme para una startup en etapa temprana.',
-    author: 'Lucía M.',
-    role: 'CTO & Co-founder',
-    company: 'PropCRM',
-    avatar: 'LM',
-    result: '3 clientes pagos en beta',
-  },
 ]

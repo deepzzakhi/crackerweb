@@ -18,7 +18,7 @@ export default function Cases() {
           </div>
         </motion.div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6">
           {CASES.map((c, i) => (
             <motion.div
               key={c.id}

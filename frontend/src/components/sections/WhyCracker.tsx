@@ -40,25 +40,6 @@ export default function WhyCracker() {
           ))}
         </div>
 
-        {/* Números grandes */}
-        <motion.div
-          initial={{ opacity: 0, y: 24 }}
-          animate={inView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.6, delay: 0.4 }}
-          className="mt-20 grid grid-cols-2 md:grid-cols-4 gap-8 text-center"
-        >
-          {[
-            { n: '40+', desc: 'Proyectos lanzados en producción' },
-            { n: '3', desc: 'Años construyendo software real' },
-            { n: '28', desc: 'Clientes en Argentina y Latam' },
-            { n: '< 1s', desc: 'Tiempo de carga promedio' },
-          ].map((s) => (
-            <div key={s.desc}>
-              <p className="font-display font-semibold text-5xl md:text-7xl text-accent/10 leading-none">{s.n}</p>
-              <p className="font-mono text-xs text-muted mt-3 leading-relaxed">{s.desc}</p>
-            </div>
-          ))}
-        </motion.div>
       </div>
     </section>
   )

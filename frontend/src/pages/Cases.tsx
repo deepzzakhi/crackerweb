@@ -1,6 +1,5 @@
 import { useEffect } from 'react'
 import Cases from '../components/sections/Cases'
-import UserStories from '../components/sections/UserStories'
 import ContactSection from '../components/sections/ContactSection'
 
 export default function CasesPage() {
@@ -12,7 +11,6 @@ export default function CasesPage() {
         <h1 className="section-heading">Casos de éxito</h1>
       </div>
       <Cases />
-      <UserStories />
       <ContactSection />
     </div>
   )

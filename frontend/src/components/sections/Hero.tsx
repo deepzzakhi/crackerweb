@@ -42,21 +42,6 @@ export default function Hero() {
           </Link>
         </motion.div>
 
-        <motion.div custom={4} variants={FADE} initial="hidden" animate="show"
-          className="mt-14 flex flex-wrap justify-center gap-8 md:gap-16"
-        >
-          {[
-            { n: '40+', label: 'Proyectos' },
-            { n: '3', label: 'Años' },
-            { n: '28', label: 'Clientes' },
-            { n: '100%', label: 'On-time' },
-          ].map((s) => (
-            <div key={s.label} className="text-center">
-              <p className="font-display font-semibold text-3xl md:text-4xl text-accent-light">{s.n}</p>
-              <p className="font-mono text-xs text-muted mt-1 tracking-wider uppercase">{s.label}</p>
-            </div>
-          ))}
-        </motion.div>
       </div>
     </section>
   )

@@ -4,7 +4,6 @@ import DashboardPreview from '../components/sections/DashboardPreview'
 import Services from '../components/sections/Services'
 import SobreNosotros from '../components/sections/SobreNosotros'
 import Cases from '../components/sections/Cases'
-import UserStories from '../components/sections/UserStories'
 import ContactSection from '../components/sections/ContactSection'
 
 export default function Home() {
@@ -16,7 +15,6 @@ export default function Home() {
       <Services />
       <SobreNosotros />
       <Cases />
-      <UserStories />
       <ContactSection />
     </>
   )
