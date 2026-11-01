@@ -4,6 +4,9 @@ export interface User {
   email: string
   avatar?: string
   role: 'USER' | 'ADMIN'
+  // isAdmin solo muestra el menú; el servidor vuelve a validar en cada request
+  isAdmin?: boolean
+  isDemo?: boolean
 }
 
 export interface KPI {

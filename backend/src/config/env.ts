@@ -47,4 +47,20 @@ export const env = {
   ANTHROPIC_API_KEY: process.env.ANTHROPIC_API_KEY ?? '',
   // Para bajar costos se puede usar claude-haiku-5-5
   CHAT_MODEL: process.env.CHAT_MODEL ?? 'claude-opus-5-5',
+
+  // ─── Agenda y portal ───
+  // Mails con acceso al panel admin (separados por coma). El primero es el anfitrión de las citas.
+  ADMIN_EMAILS: (process.env.ADMIN_EMAILS ?? '').split(',').map((s) => s.trim().toLowerCase()).filter(Boolean),
+  BUSINESS_TZ: process.env.BUSINESS_TZ ?? 'America/Argentina/Buenos_Aires',
+  BOOKING_MIN_NOTICE_HOURS: Number(process.env.BOOKING_MIN_NOTICE_HOURS ?? 12),
+  BOOKING_HORIZON_DAYS: Number(process.env.BOOKING_HORIZON_DAYS ?? 60),
+  BOOKING_MAX_ACTIVE_PER_USER: Number(process.env.BOOKING_MAX_ACTIVE_PER_USER ?? 3),
+  // Plazo para que el cliente cancele o reprograme por su cuenta
+  BOOKING_CHANGE_LIMIT_HOURS: Number(process.env.BOOKING_CHANGE_LIMIT_HOURS ?? 24),
+  // Login de prueba sin Google, solo en desarrollo (nunca se habilita en producción)
+  DEV_LOGIN: !isProduction && process.env.DEV_LOGIN === 'true',
+  // Mails: hasta elegir proveedor quedan en el log del servidor
+  MAIL_PROVIDER: (process.env.MAIL_PROVIDER ?? 'log') as 'log' | 'resend',
+  MAIL_FROM: process.env.MAIL_FROM ?? 'Cracker <crackersoftware@gmail.com>',
+  RESEND_API_KEY: process.env.RESEND_API_KEY ?? '',
 }

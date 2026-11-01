@@ -5,7 +5,8 @@ services:
     rootDir: backend
     # --include=dev: con NODE_ENV=production npm saltea TypeScript y Prisma CLI, y el build falla
     buildCommand: npm ci --include=dev && npx prisma generate && npm run build
-    startCommand: npx prisma migrate deploy && node dist/server.js
+    # El seed es idempotente: crea admins, tipos de reunión y horario solo si faltan
+    startCommand: npx prisma migrate deploy && npm run db:seed && node dist/server.js
     healthCheckPath: /api/health
     envVars:
       - key: NODE_ENV
@@ -28,3 +29,9 @@ services:
         sync: false
       - key: CHAT_MODEL
         value: claude-opus-5-5
+      - key: ADMIN_EMAILS
+        value: crackersoftware@gmail.com,alexisplescia@gmail.com
+      - key: MAIL_PROVIDER
+        value: log
+      - key: RESEND_API_KEY
+        sync: false

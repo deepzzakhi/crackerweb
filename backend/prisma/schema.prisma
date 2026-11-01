@@ -16,6 +16,11 @@ model User {
   role       Role     @default(USER)
   createdAt  DateTime @default(now())
   updatedAt  DateTime @updatedAt
+
+  appointments Appointment[] @relation("ClientAppointments")
+  hosting      Appointment[] @relation("HostAppointments")
+  projects     Project[]
+  invoices     Invoice[]
 }
 
 model ContactMessage {
@@ -30,4 +35,150 @@ model ContactMessage {
 enum Role {
   USER
   ADMIN
+}
+
+// ─── Agenda ────────────────────────────────────────────────────────────────
+
+enum AppointmentStatus {
+  PENDING
+  CONFIRMED
+  CANCELLED
+  DONE
+}
+
+enum Modality {
+  VIRTUAL
+  PRESENCIAL
+}
+
+// Tipo de reunión que el cliente puede reservar (ej. "Primera charla", 30 min)
+model MeetingType {
+  id          String   @id @default(cuid())
+  slug        String   @unique
+  name        String
+  description String   @default("")
+  durationMin Int
+  priceCents  Int?     // opcional: en la etapa 3 se cobra con MercadoPago
+  currency    String   @default("ARS")
+  active      Boolean  @default(true)
+  sortOrder   Int      @default(0)
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  appointments Appointment[]
+}
+
+// Franja semanal disponible, en hora local de `timezone` (ej. lunes 09:00–20:00)
+model AvailabilityRule {
+  id         String   @id @default(cuid())
+  weekday    Int      // 0 = domingo … 6 = sábado
+  startMin   Int      // minutos desde las 00:00 (540 = 09:00)
+  endMin     Int
+  slotMin    Int      @default(30) // cada cuánto arranca un turno
+  bufferMin  Int      @default(10) // descanso entre citas
+  timezone   String   @default("America/Argentina/Buenos_Aires")
+  createdAt  DateTime @default(now())
+
+  @@index([weekday])
+}
+
+// Fechas bloqueadas (vacaciones, feriados), en UTC
+model AvailabilityException {
+  id        String   @id @default(cuid())
+  startsAt  DateTime
+  endsAt    DateTime
+  reason    String   @default("")
+  createdAt DateTime @default(now())
+
+  @@index([startsAt, endsAt])
+}
+
+// La superposición de citas del mismo anfitrión se impide en la base con una
+// restricción de exclusión (ver la migración SQL), no solo en el código.
+model Appointment {
+  id            String            @id @default(cuid())
+  userId        String
+  hostId        String
+  meetingTypeId String
+  startsAt      DateTime
+  endsAt        DateTime
+  status        AppointmentStatus @default(PENDING)
+  modality      Modality          @default(VIRTUAL)
+  topic         String            @default("") // qué necesita el cliente
+  company       String?
+  phone         String?
+  adminNotes    String            @default("") // solo las ve el admin
+  meetUrl       String?
+  googleEventId String?
+  cancelledAt   DateTime?
+  createdAt     DateTime          @default(now())
+  updatedAt     DateTime          @updatedAt
+
+  user        User        @relation("ClientAppointments", fields: [userId], references: [id])
+  host        User        @relation("HostAppointments", fields: [hostId], references: [id])
+  meetingType MeetingType @relation(fields: [meetingTypeId], references: [id])
+
+  @@index([userId, startsAt])
+  @@index([hostId, startsAt])
+}
+
+// ─── Portal del cliente ────────────────────────────────────────────────────
+
+enum ProjectStatus {
+  PROPOSAL
+  ACTIVE
+  PAUSED
+  LIVE
+  DONE
+}
+
+model Project {
+  id            String        @id @default(cuid())
+  userId        String
+  name          String
+  status        ProjectStatus @default(ACTIVE)
+  progress      Int           @default(0) // 0–100
+  stack         String[]
+  startDate     DateTime?
+  endDate       DateTime?
+  nextMilestone String        @default("")
+  createdAt     DateTime      @default(now())
+  updatedAt     DateTime      @updatedAt
+
+  user User @relation(fields: [userId], references: [id])
+
+  @@index([userId])
+}
+
+enum InvoiceKind {
+  QUOTE   // presupuesto
+  INVOICE // factura
+}
+
+enum InvoiceStatus {
+  DRAFT
+  SENT
+  PAID
+  OVERDUE
+}
+
+model Invoice {
+  id          String        @id @default(cuid())
+  userId      String
+  kind        InvoiceKind   @default(INVOICE)
+  number      String
+  concept     String
+  amountCents Int
+  currency    String        @default("ARS")
+  status      InvoiceStatus @default(DRAFT)
+  dueDate     DateTime?
+  paidAt      DateTime?
+  pdfUrl      String?
+  createdAt   DateTime      @default(now())
+  updatedAt   DateTime      @updatedAt
+
+  user User @relation(fields: [userId], references: [id])
+
+  @@unique([kind, number])
+  @@index([userId])
 }

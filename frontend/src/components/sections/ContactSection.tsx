@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import { Link } from 'react-router-dom'
 import { motion, useInView } from 'framer-motion'
 import { useRef } from 'react'
 import api from '../../services/api'
@@ -108,9 +109,7 @@ export default function ContactSection() {
               <p className="font-mono text-xs text-muted mb-1">Reunión</p>
               <div className="flex flex-wrap items-center justify-between gap-3">
                 <p className="font-body text-sm text-text">Agendá una cita con el equipo</p>
-                {/* Por ahora la cita se coordina por WhatsApp; después va al flujo de agenda con cuenta */}
-                <a href={whatsappLink('Hola Cracker! Quiero agendar una reunión para contarles mi proyecto.')} target="_blank" rel="noopener noreferrer"
-                  className="btn-secondary text-xs py-2 px-4">Agendar →</a>
+                <Link to="/agendar" className="btn-secondary text-xs py-2 px-4 min-h-11">Agendar →</Link>
               </div>
             </div>
           </motion.div>

@@ -3,12 +3,17 @@ import authRoutes from './authRoutes'
 import contactRoutes from './contactRoutes'
 import dashboardRoutes from './dashboardRoutes'
 import chatRoutes from './chatRoutes'
+import { bookingPublic, me } from './bookingRoutes'
+import adminRoutes from './adminRoutes'
 
 const router = Router()
 
 router.use('/auth', authRoutes)
 router.use('/contact', contactRoutes)
 router.use('/chat', chatRoutes)
+router.use('/booking', bookingPublic)
+router.use('/me', me)
+router.use('/admin', adminRoutes)
 router.use('/dashboard', dashboardRoutes)
 router.get('/health', (_req, res) => res.json({ status: 'ok', service: 'cracker-api' }))
 

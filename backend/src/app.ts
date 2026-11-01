@@ -17,7 +17,7 @@ app.disable('x-powered-by')
 
 app.use(helmet())
 // Auth por header Bearer (sin cookies): no hace falta credentials
-app.use(cors({ origin: env.FRONTEND_URLS, methods: ['GET', 'POST'], allowedHeaders: ['Content-Type', 'Authorization'] }))
+app.use(cors({ origin: env.FRONTEND_URLS, methods: ['GET', 'POST', 'PUT', 'PATCH', 'DELETE'], allowedHeaders: ['Content-Type', 'Authorization'] }))
 if (env.NODE_ENV !== 'production') app.use(morgan('dev'))
 app.use(express.json({ limit: '32kb' }))
 

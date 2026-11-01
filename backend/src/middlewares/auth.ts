@@ -28,3 +28,18 @@ export function authenticate(req: AuthRequest, res: Response, next: NextFunction
     res.status(401).json({ success: false, message: 'Token inválido' })
   }
 }
+
+// Para rutas públicas que se enriquecen si hay sesión (ej. horarios al reprogramar).
+// Un token inválido se ignora en vez de cortar la request.
+export function optionalAuthenticate(req: AuthRequest, _res: Response, next: NextFunction) {
+  const [scheme, token] = req.headers.authorization?.split(' ') ?? []
+  if (scheme === 'Bearer' && token) {
+    try {
+      const payload = jwt.verify(token, env.JWT_SECRET, { algorithms: ['HS256'] }) as Payload
+      req.userId = payload.userId
+      req.userEmail = payload.email
+      req.isDemo = !!payload.demo
+    } catch { /* sin sesión */ }
+  }
+  next()
+}

@@ -11,6 +11,7 @@ const LINKS = [
   { to: '/casos', label: 'Casos' },
   { to: '/#sobre', label: 'Sobre Cracker' },
   { to: '/blog', label: 'Blog' },
+  { to: '/agendar', label: 'Agendar' },
 ]
 
 export default function Navbar() {
@@ -60,11 +61,10 @@ export default function Navbar() {
           <ThemeToggle />
           {isAuthenticated ? (
             <>
-              {!isDashboard && (
-                <Link to="/dashboard" className="btn-ghost text-sm">
-                  Dashboard
-                </Link>
-              )}
+              {user?.isDemo
+                ? !isDashboard && <Link to="/dashboard" className="btn-ghost text-sm">Dashboard</Link>
+                : <Link to="/cuenta" className="btn-ghost text-sm">Mi cuenta</Link>}
+              {user?.isAdmin && <Link to="/admin" className="btn-ghost text-sm">Admin</Link>}
               <div className="flex items-center gap-2">
                 {user?.avatar ? (
                   <img src={user.avatar} alt={user.name} className="w-7 h-7 rounded-full" />
@@ -122,7 +122,10 @@ export default function Navbar() {
             <div className="border-t border-border pt-4 flex flex-col gap-3">
               {isAuthenticated ? (
                 <>
-                  <Link to="/dashboard" className="btn-primary w-full justify-center text-xs">Dashboard</Link>
+                  {user?.isDemo
+                    ? <Link to="/dashboard" className="btn-primary w-full justify-center text-xs">Dashboard</Link>
+                    : <Link to="/cuenta" className="btn-primary w-full justify-center text-xs">Mi cuenta</Link>}
+                  {user?.isAdmin && <Link to="/admin" className="btn-secondary w-full justify-center text-xs">Admin</Link>}
                   <button onClick={() => { logout(); navigate('/') }} className="btn-secondary w-full justify-center text-xs">Salir</button>
                 </>
               ) : (
